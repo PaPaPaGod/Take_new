@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#F4F1EA"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/toolbar">
+    </include>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout4"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="75dp"
+                android:layout_marginLeft="25dp">
+
+                <TextView
+                    style="@style/Express_Detail"
+                    android:text="@string/expressCompany" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#0f0f0f"
+                    android:textSize="20dp"
+                    android:text="Company"
+                    android:id="@+id/express_company_detail"
+    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/Express_Detail"
+                    android:text="@string/takenTime"
+                    android:id="@+id/taken_time_detail"/>
+
+                <TextView
+                    android:text="TakeTime"
+                    android:id="@+id/express_take_time_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#0f0f0f"
+                    android:textSize="20dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:text="@string/takenLocation"
+                    style="@style/Express_Detail"
+                    />
+                <TextView
+                    android:text="address"
+                    android:id="@+id/express_location_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#0f0f0f"
+                    android:textSize="20dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:text="交接地点"
+                    style="@style/Express_Detail" />
+
+                <TextView
+                    android:text="交易点"
+                    android:id="@+id/express_trade_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#0f0f0f"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:text="@string/description"
+                    style="@style/Express_Detail" />
+
+                <TextView
+                    android:text="包裹描述"
+                    android:id="@+id/express_trade_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#0f0f0f"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:text="@string/bounty"
+                    style="@style/Express_Detail" />
+
+                <TextView
+                    android:text="￥2.00"
+                    android:id="@+id/express_trade_bounty_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#0f0f0f"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/take_button"
+                android:textColor="#ffffff"
+                android:id="@+id/take_button"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#fff841"
+                android:textSize="20dp"/>
+        </LinearLayout>
+
+        <!--<TextView-->
+            <!--android:textSize="18dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="XX元"-->
+            <!--android:id="@+id/express_detail_money"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_toRightOf="@+id/linearLayout4"-->
+            <!--android:layout_toEndOf="@+id/linearLayout4"-->
+            <!--android:layout_marginTop="41dp" />-->
+
+    </LinearLayout>
+</RelativeLayout>

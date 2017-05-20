@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#F4F1EA"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/expressCompany"
+                        android:id="@+id/express_company"
+                        android:textColor="#fff841"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="15dp"
+                        />
+
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:entries="@array/express_company_array"
+                        android:id="@+id/spinner_company"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                    </android.support.v7.widget.AppCompatSpinner>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp">
+
+                    <TextView
+                        android:text="@string/takenTime"
+                        android:id="@+id/taken_time"
+                        style="@style/publishTextStyle"
+                        />
+
+                    <Button
+                        android:textColor="#92918C"
+                        android:text="选择快递到达时间段"
+                        android:gravity="fill_vertical"
+                        android:background="#00000000"
+                        android:textSize="18dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/btn_taken_time"
+                        android:layout_width="321dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp">
+
+                    <TextView
+                        android:text="@string/takenLocation"
+                        android:id="@+id/taken_location"
+                        style="@style/publishTextStyle"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/taken_location_editText"
+                        android:hint="@string/enter_taken_location"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp">
+
+                    <TextView
+                        android:text="交接地点"
+                        android:textColor="#fff841"
+                        android:id="@+id/trade_position"
+                        style="@style/publishTextStyle"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/trade_position_editText"
+                        android:hint="@string/enter_finish_location"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:maxLines="4"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp">
+
+                    <TextView
+                        style="@style/publishTextStyle"
+                        android:text="@string/description"
+                        android:id="@+id/description"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/decription_editText"
+                        android:hint="@string/enter_description"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:maxLines="4"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="35dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/bounty"
+                            android:id="@+id/checkBox"
+                            android:checked="false"
+                            android:layout_gravity="center_horizontal|left" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:id="@+id/createOrder_getMoney"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="@string/￥"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content" />
+
+                        <EditText
+                            android:paddingTop="8dp"
+                            android:paddingBottom="5dp"
+                            android:hint="@string/enter_bounty_price"
+                            android:id="@+id/amount"
+                            android:layout_width="197dp"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/publishTextStyle"
+                    android:text="@string/publish_sms" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sms_content"
+                    android:hint="@string/publish_sms_hint"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:maxLines="8" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="@string/announce"
+                    android:background="#fff841"
+                    android:textSize="20dp"
+                    android:id="@+id/announce_button"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/warning_information"
+                    android:textColor="#ea2929"
+                    android:textSize="10dp"
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/warning_information"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

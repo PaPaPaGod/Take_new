@@ -1,0 +1,9 @@
+package com.price.take_new.service.viewService;
+
+/**
+ * Created by price on 2/23/2017.
+ */
+
+public interface IFeedBackView {
+    void showToast(String msg,int code);
+}

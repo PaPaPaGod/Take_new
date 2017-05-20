@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#F4F1EA"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <include
+    layout="@layout/toolbar"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="420dp">
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/name"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="35dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/request_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0f0f0f"
+                    android:textSize="18dp"
+                    android:layout_marginTop="3dp"
+                    android:text="New Text"
+                    android:id="@+id/express_help_detail_request" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/major"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:layout_below="@+id/name"
+                android:layout_alignLeft="@+id/name"
+                android:layout_alignStart="@+id/name">
+                <TextView
+                    android:text="@string/request_major"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0f0f0f"
+                    android:textSize="18dp"
+                    android:layout_marginTop="3dp"
+                    android:text="New Text"
+                    android:id="@+id/express_help_detail_request_major" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/takenLocation"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_below="@+id/takenTime"
+                android:layout_alignLeft="@+id/takenTime"
+                android:layout_alignStart="@+id/takenTime">
+
+                <TextView
+                    android:text="@string/takenLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0f0f0f"
+                    android:textSize="18dp"
+                    android:layout_marginTop="3dp"
+                    android:text="New Text"
+                    android:id="@+id/express_help_detail_place" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/company"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_below="@+id/major"
+                android:layout_alignLeft="@+id/major"
+                android:layout_alignStart="@+id/major">
+                <TextView
+                    android:text="@string/expressCompany"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0f0f0f"
+                    android:textSize="18dp"
+                    android:layout_marginTop="3dp"
+                    android:text="New Text"
+                    android:id="@+id/express_help_detail_company" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/takenTime"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_below="@+id/company"
+                android:layout_alignLeft="@+id/company"
+                android:layout_alignStart="@+id/company">
+
+                <TextView
+                    android:text="@string/takenTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0f0f0f"
+                    android:textSize="18dp"
+                    android:layout_marginTop="3dp"
+                    android:text="New Text"
+                    android:id="@+id/express_help_detail_time" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/finishLocation"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/takenLocation"
+                android:layout_alignLeft="@+id/takenLocation"
+                android:layout_alignStart="@+id/takenLocation">
+
+                <TextView
+                    android:text="@string/finish_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0f0f0f"
+                    android:textSize="18dp"
+                    android:layout_marginTop="3dp"
+                    android:text="New Text"
+                    android:id="@+id/express_help_detail_finish_location" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/status"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/finishLocation"
+                android:layout_alignLeft="@+id/finishLocation"
+                android:layout_alignStart="@+id/finishLocation">
+
+                <TextView
+                    android:text="@string/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0f0f0f"
+                    android:textSize="18dp"
+                    android:layout_marginTop="3dp"
+                    android:text="New Text"
+                    android:id="@+id/express_help_detail_status" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/status"
+                android:layout_alignLeft="@+id/status"
+                android:layout_alignStart="@+id/status">
+                <TextView
+                    android:text="快递短信"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="18dp"
+                    android:layout_marginTop="3dp"
+                    android:textColor="#0000FF"
+                    android:id="@+id/sys_notification_sms"
+                    android:text="@string/click_publish_sms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <Button
+        android:text="与TA聊天"
+        android:layout_width="280dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_send_to_request"
+        android:layout_below="@+id/status"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp" />
+
+</LinearLayout>

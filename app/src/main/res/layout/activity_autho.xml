@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#F4F1EA"
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/toolbar">
+
+    </include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <TextView
+            android:text="@string/student_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="10dp"
+            android:textSize="20dp"
+            android:textColor="#fff841"/>
+
+        <EditText
+            android:layout_marginLeft="10dp"
+            android:id="@+id/et_autho_stu_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:hint="@string/enter_student_number"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:text="@string/enter_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="#fff841"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:layout_marginLeft="10dp"
+            android:id="@+id/et_autho_stu_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:hint="@string/enter_password_hint"
+            android:inputType="none" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_submit_autho"
+        android:text="@string/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff841"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"/>
+
+</LinearLayout>
