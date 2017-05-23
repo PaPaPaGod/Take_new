@@ -20,6 +20,7 @@ import java.util.List;
 import io.rong.imkit.RongContext;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
+import io.rong.imlib.model.Conversation;
 import io.rong.imlib.model.Message;
 import io.rong.imlib.model.UserInfo;
 
@@ -50,6 +51,7 @@ public class Rong {
                     RongIM.getInstance().setOnReceiveMessageListener(new RongIMClient.OnReceiveMessageListener() {
                         @Override
                         public boolean onReceived(Message message, int i) {
+//                            nodeRed.setChatRed();
                             String senderId = message.getSenderUserId();
                             com.price.take_new.bean.UserInfo info = userInfoDao.queryBuilder()
                                     .where(UserInfoDao.Properties.Id.like(senderId)).unique();
@@ -181,4 +183,8 @@ public class Rong {
                 }
             });
         }
+
+    public interface NodeRed{
+        void setChatRed();
+    }
 }

@@ -71,9 +71,11 @@ public class HomeActivity extends AppActivity implements IGetUserInfoView, View.
 
     private Boolean isAuth;
 
+    private int unReadMsgCount = 0;
+
     //    private ViewPagerIndicator mIndicator;
     private List<String> mTities = Arrays.asList("快递广场","消息","个人中心");
-    private int images[] ={R.drawable.express_plaza_selector, R.drawable.message_selector, R.drawable.personal_center_selector};
+    private int images[] ={R.drawable.express_plaza_selector, R.drawable.message_selector, R.drawable.personal_center_selector,R.drawable.message_selector_red};
 
     public View getTabView(int position) {
         View v = LayoutInflater.from(HomeActivity.this).inflate(R.layout.tab_custom, null);
@@ -81,6 +83,13 @@ public class HomeActivity extends AppActivity implements IGetUserInfoView, View.
         ImageView imageView = (ImageView) v.findViewById(R.id.iv_icon);
         textView.setText(mTities.get(position));
         imageView.setImageResource(images[position]);
+        if(position == 1){
+            if(unReadMsgCount == 0) {
+                imageView.setImageResource(images[position]);
+            }else if(unReadMsgCount !=0){
+                imageView.setImageResource(images[3]);
+            }
+        }
         //添加一行，设置颜色
         textView.setTextColor(tabLayout.getTabTextColors());//
         return v;
@@ -160,6 +169,7 @@ public class HomeActivity extends AppActivity implements IGetUserInfoView, View.
             TabLayout.Tab tab = tabLayout.getTabAt(i);
             tab.setCustomView(getTabView(i));
         }
+        addUnReadMessageCountChanged();
 //        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 //            @Override
 //            public void onTabSelected(TabLayout.Tab tab) {
@@ -191,6 +201,21 @@ public class HomeActivity extends AppActivity implements IGetUserInfoView, View.
 //                }
 //            }
 //        });
+    }
+
+    private void addUnReadMessageCountChanged() {
+        RongIM.getInstance().setOnReceiveUnreadCountChangedListener(new RongIM.OnReceiveUnreadCountChangedListener() {
+            @Override
+            public void onMessageIncreased(int i) {
+                Log.e("unreadcount",i+"");
+                unReadMsgCount = i;
+//                tabLayout.
+                for (int j = 0; i < tabLayout.getTabCount(); i++) {
+                    TabLayout.Tab tab = tabLayout.getTabAt(i);
+                    tab.setCustomView(getTabView(j));
+                }
+            }
+        },Conversation.ConversationType.PRIVATE);
     }
 
     @Override
