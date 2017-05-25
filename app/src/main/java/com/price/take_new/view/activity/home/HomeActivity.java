@@ -82,13 +82,14 @@ public class HomeActivity extends AppActivity implements IGetUserInfoView, View.
         TextView textView = (TextView) v.findViewById(R.id.tv_title);
         ImageView imageView = (ImageView) v.findViewById(R.id.iv_icon);
         textView.setText(mTities.get(position));
-        imageView.setImageResource(images[position]);
         if(position == 1){
             if(unReadMsgCount == 0) {
                 imageView.setImageResource(images[position]);
             }else if(unReadMsgCount !=0){
                 imageView.setImageResource(images[3]);
             }
+        }else{
+            imageView.setImageResource(images[position]);
         }
         //添加一行，设置颜色
         textView.setTextColor(tabLayout.getTabTextColors());//
@@ -144,7 +145,6 @@ public class HomeActivity extends AppActivity implements IGetUserInfoView, View.
             handleIntent(getIntent());
         }
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
-        tabLayout = (TabLayout) findViewById(R.id.tablayout);
 
         ry_toolbar = (RelativeLayout) findViewById(R.id.ly_toolbar);
         if(ry_toolbar == null){
@@ -162,6 +162,7 @@ public class HomeActivity extends AppActivity implements IGetUserInfoView, View.
         mFragment.add(Personal_Center_Tab_Fragment.getInstance());//加入第三页
         Personal_Center_Tab_Fragment.getInstance().setArguments(sendToFragment);
 
+        tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(mViewPager);
         //设置自定义视图
         initIndicator();
@@ -209,9 +210,11 @@ public class HomeActivity extends AppActivity implements IGetUserInfoView, View.
             public void onMessageIncreased(int i) {
                 Log.e("unreadcount",i+"");
                 unReadMsgCount = i;
-//                tabLayout.
-                for (int j = 0; i < tabLayout.getTabCount(); i++) {
-                    TabLayout.Tab tab = tabLayout.getTabAt(i);
+                tabLayout = null;
+                tabLayout = (TabLayout) findViewById(R.id.tablayout);
+                tabLayout.setupWithViewPager(mViewPager);
+                for (int j = 0; j < tabLayout.getTabCount(); j++) {
+                    TabLayout.Tab tab = tabLayout.getTabAt(j);
                     tab.setCustomView(getTabView(j));
                 }
             }
