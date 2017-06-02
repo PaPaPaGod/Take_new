@@ -67,4 +67,13 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="15dp"/>
 
+    <TextView
+        android:textColor="@color/red"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="认证系统与教务网绑定，请如实填写你的学号及教务网密码，take绝对不会向第三方泄露你的个人信息！"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

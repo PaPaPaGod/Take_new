@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#FFF841</color>
     <color name="colorAccent">#FF4081</color>
     <color name="grey">#8C8C8C</color>
+    <color name="red">#EA2000</color>
 
     <color name="background">#00000000</color>
     <color name="split_line">#11112233</color>

@@ -8,12 +8,15 @@ android {
         applicationId "com.price.take_new"
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 6
-        versionName "1.0.6"
+        versionCode 10
+        versionName "1.0.10"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
 
     sourceSets {
         main {
@@ -59,6 +62,7 @@ dependencies {
     compile project(':Rong_Cloud_Android_IMKit_SDK_v2_6_7_stable')
     compile project(':takeretrofit')
     compile 'org.greenrobot:greendao:3.2.0'
+    compile files('libs/MiPush_SDK_Client_3_4_0.jar')
 }
 
 

@@ -9,12 +9,17 @@ import com.price.take_new.bean.DaoMaster;
 import com.price.take_new.bean.DaoSession;
 
 import io.rong.imkit.RongIM;
+import io.rong.push.RongPushClient;
 
 /**
  * Created by price on 1/16/2017.
  */
 
 public class App extends Application {
+    private static final String MIAPP_KEY = "5521756523703";
+    private static final String MIAPP_ID = "2882303761517565703";
+
+
     private static Context context;
 
     private static DaoMaster.DevOpenHelper mHelper;
@@ -59,6 +64,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
+        RongPushClient.registerMiPush(this,MIAPP_ID,MIAPP_KEY);
         RongIM.init(this);
         initDatabase();
     }

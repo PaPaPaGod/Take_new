@@ -26,41 +26,51 @@ public class MyNotificationReceiver extends PushMessageReceiver {
     private NotificationManager manager;
     private Notification notification;
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public boolean onNotificationMessageArrived(Context context, PushNotificationMessage pushNotificationMessage) {
-        sendName = pushNotificationMessage.getSenderName();
-        userId = pushNotificationMessage.getSenderId();
-        manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification.Builder builder = new Notification.Builder(context);
-        Log.e("aaa","onClick");
-        Intent intent = new Intent(context, NotificationSplashActivity.class);
-        intent.putExtra("noti",userId);
-        intent.putExtra("username",sendName);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-        builder.setContentText(sendName+"send msg to you");
-//        builder.setContentIntent(pendingIntent);
-        builder.setContentTitle(sendName);
-        builder.setAutoCancel(true);
-        builder.setSmallIcon(R.mipmap.launcher_icon);
-        notification = builder.build();
-        manager.notify(0,notification);
-        return true;
+        return false;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public boolean onNotificationMessageClicked(Context context, PushNotificationMessage pushNotificationMessage) {
-        Log.e("aaa","click");
-//        if (RongIM.getInstance() != null) {
-//            RongIM.getInstance().startPrivateChat(context, pushNotificationMessage.getSenderId(), pushNotificationMessage.getSenderName());
-//        }
-//        manager.notify(0,notification);
-        Intent intent = new Intent(context, NotificationSplashActivity.class);
-        intent.putExtra("noti",pushNotificationMessage.getSenderId());
-        intent.putExtra("username",pushNotificationMessage.getSenderName());
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
-        return true;
+        return false;
     }
+
+//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+//    @Override
+//    public boolean onNotificationMessageArrived(Context context, PushNotificationMessage pushNotificationMessage) {
+//        sendName = pushNotificationMessage.getSenderName();
+//        userId = pushNotificationMessage.getSenderId();
+//        manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+//        Notification.Builder builder = new Notification.Builder(context);
+//        Log.e("aaa","onClick");
+//        Intent intent = new Intent(context, NotificationSplashActivity.class);
+//        intent.putExtra("noti",userId);
+//        intent.putExtra("username",sendName);
+////        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+//        builder.setContentText(sendName+"send msg to you");
+////        builder.setContentIntent(pendingIntent);
+//        builder.setContentTitle(sendName);
+//        builder.setAutoCancel(true);
+//        builder.setSmallIcon(R.mipmap.launcher_icon);
+//        notification = builder.build();
+//        manager.notify(0,notification);
+//        return true;
+//    }
+//
+//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+//    @Override
+//    public boolean onNotificationMessageClicked(Context context, PushNotificationMessage pushNotificationMessage) {
+//        Log.e("aaa","click");
+////        if (RongIM.getInstance() != null) {
+////            RongIM.getInstance().startPrivateChat(context, pushNotificationMessage.getSenderId(), pushNotificationMessage.getSenderName());
+////        }
+////        manager.notify(0,notification);
+//        Intent intent = new Intent(context, NotificationSplashActivity.class);
+//        intent.putExtra("noti",pushNotificationMessage.getSenderId());
+//        intent.putExtra("username",pushNotificationMessage.getSenderName());
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        context.startActivity(intent);
+//        return true;
+//    }
 }

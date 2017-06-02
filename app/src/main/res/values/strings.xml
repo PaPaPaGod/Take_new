@@ -44,13 +44,13 @@
     <string name="finish_location">交接地点</string>
     <string name="request_name">请求者姓名</string>
     <string name="request_major">请求者所在专业班级</string>
-    <string name="bounty">赏金</string>
+    <string name="bounty">奖励</string>
     <string name="￥">￥</string>
     <string name="bounty_price">打赏赏金</string>
-    <string name="enter_bounty_price">选填，如加赏金代拿速度秒增</string>
+    <string name="enter_bounty_price">给点小奖励会让更快地被接单哟</string>
     <string name="enter_taken_location">取件详细地点，如秀水广场</string>
-    <string name="enter_finish_location">你希望Taker帮你将快递送到哪里，如宿舍请注明宿舍号</string>
-    <string name="enter_description">描述物件大小或者形状，让taker更快帮你找到快递。如有特殊需求，也可以写上</string>
+    <string name="enter_finish_location">你希望taker在哪将快递交到你手上，如宿舍请注明x栋楼下</string>
+    <string name="enter_description">描述快递大小形状或者具体物体，这将让taker更快找到你的快递，不在学校请注明，有特殊要求也可以写上</string>
     <string name="enter_taken_time">取件时间段</string>
     <string name="confirm_password">确认密码</string>
     <string name="action_settings">设置</string>
@@ -67,7 +67,7 @@
     <string name="LoginProgressDialogTitle">登陆</string>
     <string name="LoginProgressDialogContent">正在登陆中...</string>
     <string name="footer_load_more">加载更多</string>
-    <string name="app_version">1.0.6</string>
+    <string name="app_version">1.0.10</string>
 
     <string name="cancle">取消</string>
     <string name="title">请选择时间</string>
