@@ -10,118 +10,137 @@
     android:layout_marginBottom="2dp"
     android:background="@drawable/rectangle">
 
-    <LinearLayout
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@mipmap/male"
-            android:id="@+id/help_express_portrait" />
-
-        <TextView
-            android:textSize="15dp"
-            android:text="User"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/help_express_name"
-            android:layout_below="@id/help_express_portrait"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="11.11"
-            android:textSize="12dp"
-            android:id="@+id/help_express_time"
-            android:layout_below="@id/help_express_name"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"  />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="250dp"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        >
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="快递公司"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
-                android:textColor="#0f0f0f"
-                android:text="company"
-                android:id="@+id/help_express_company"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="取件地点"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
-                android:textColor="#0f0f0f"
-                android:text="takenLocation"
-                android:id="@+id/help_express_place"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="包裹描述"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
-                android:textColor="#0f0f0f"
-                android:text="decripiton"
-                android:id="@+id/help_express_description"/>
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        app:cardBackgroundColor="@color/color1"
+        android:id="@+id/personal_card"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="12dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:text="￥有赏金"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/tv_express_state"
-            android:textSize="10dp"
-            android:textColor="#ebd731"/>
-    </RelativeLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    app:srcCompat="@mipmap/male"
+                    android:id="@+id/help_express_portrait" />
+
+                <TextView
+                    android:textSize="15dp"
+                    android:text="User"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/help_express_name"
+                    android:layout_below="@id/help_express_portrait"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="11.11"
+                    android:textSize="12dp"
+                    android:id="@+id/help_express_time"
+                    android:layout_below="@id/help_express_name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"  />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                >
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="快递公司"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:textColor="#0f0f0f"
+                        android:text="company"
+                        android:id="@+id/help_express_company"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="取件地点"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:textColor="#0f0f0f"
+                        android:text="takenLocation"
+                        android:id="@+id/help_express_place"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="包裹描述"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:textColor="#0f0f0f"
+                        android:text="decripiton"
+                        android:id="@+id/help_express_description"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:text="￥有赏金"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/tv_express_state"
+                    android:textSize="10dp"
+                    android:textColor="#ebd731"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
 </LinearLayout>
