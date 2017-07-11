@@ -10,6 +10,7 @@ import com.price.take_new.bean.DaoSession;
 
 import io.rong.imkit.RongIM;
 import io.rong.push.RongPushClient;
+import io.rong.push.common.RongException;
 
 /**
  * Created by price on 1/16/2017.
@@ -65,6 +66,7 @@ public class App extends Application {
         super.onCreate();
         context = getApplicationContext();
         RongPushClient.registerMiPush(this,MIAPP_ID,MIAPP_KEY);
+        RongPushClient.registerHWPush(this);
         RongIM.init(this);
         initDatabase();
     }

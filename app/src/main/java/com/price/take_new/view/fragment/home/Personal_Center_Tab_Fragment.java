@@ -186,7 +186,8 @@ public class Personal_Center_Tab_Fragment extends BaseFragment implements IGetUs
 
     @Override
     public void showToast(String msg) {
-        Toast.makeText(getActivity(),msg,Toast.LENGTH_SHORT).show();
+        if(!TextUtils.isEmpty(msg))
+            Toast.makeText(getActivity(),msg,Toast.LENGTH_SHORT).show();
     }
 
     @Override

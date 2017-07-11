@@ -328,12 +328,12 @@
         "source": "E:\\MyProject\\androidapp\\Take_new\\Rong_Cloud_Android_IMKit_SDK_v2_6_7_stable\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f35a.png"
     },
     {
-        "merged": "E:\\MyProject\\androidapp\\Take_new\\Rong_Cloud_Android_IMKit_SDK_v2_6_7_stable\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_notification_network_available.png",
-        "source": "E:\\MyProject\\androidapp\\Take_new\\Rong_Cloud_Android_IMKit_SDK_v2_6_7_stable\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_notification_network_available.png"
-    },
-    {
         "merged": "E:\\MyProject\\androidapp\\Take_new\\Rong_Cloud_Android_IMKit_SDK_v2_6_7_stable\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f611.png",
         "source": "E:\\MyProject\\androidapp\\Take_new\\Rong_Cloud_Android_IMKit_SDK_v2_6_7_stable\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f611.png"
+    },
+    {
+        "merged": "E:\\MyProject\\androidapp\\Take_new\\Rong_Cloud_Android_IMKit_SDK_v2_6_7_stable\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_notification_network_available.png",
+        "source": "E:\\MyProject\\androidapp\\Take_new\\Rong_Cloud_Android_IMKit_SDK_v2_6_7_stable\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_notification_network_available.png"
     },
     {
         "merged": "E:\\MyProject\\androidapp\\Take_new\\Rong_Cloud_Android_IMKit_SDK_v2_6_7_stable\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_picsel_back_normal.png",

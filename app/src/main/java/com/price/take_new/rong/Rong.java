@@ -1,7 +1,9 @@
 package com.price.take_new.rong;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
@@ -32,7 +34,7 @@ public class Rong {
 
     private static final String tag = "rong_test";
 
-    static UserInfoDao userInfoDao = App.getDaoSession().getUserInfoDao();
+    private static UserInfoDao userInfoDao = App.getDaoSession().getUserInfoDao();
 
     public static void connect(String token) {
         RongIM.connect(token, new RongIMClient.ConnectCallback() {

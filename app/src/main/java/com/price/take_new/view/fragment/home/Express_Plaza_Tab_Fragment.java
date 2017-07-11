@@ -171,10 +171,6 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
     @Override
     public void onItemClick(View view, int position) {
         Log.e("click",position+"   ");
-        if(!ManagerData.getAuth(getActivity())){
-            check();
-            return;
-        }
         if(position == mData.size()){
             if(!isLoading){
                 isLoading = true;
@@ -184,10 +180,10 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
             Toast.makeText(getActivity(),"load",Toast.LENGTH_LONG).show();
             return;
         }
-//        if(!App.info.isAuthorization()){
-//            mentionToAuth();
-//            return;
-//        }
+        if(!ManagerData.getAuth(getActivity())){
+            check();
+            return;
+        }
         if(position<mData.size()){
             Intent intent = new Intent(getActivity(), ExpressDetailActivity.class);
             DeliveryDatum data = mData.get(position);
