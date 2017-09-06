@@ -7,11 +7,13 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.takeretrofit.bean.delivery.DeliveryDatum;
 import com.example.takeretrofit.bean.mydeliveryorder.MyDeliveryOrderDatum;
 import com.example.takeretrofit.bean.myhelpdeliveryorder.MyHelpOrderDatum;
 import com.price.take_new.Constant;
@@ -24,6 +26,9 @@ import com.price.take_new.utils.adapter.PackageMyAdapter;
 import com.price.take_new.utils.item.PersonalExpressItem;
 import com.price.take_new.utils.listener.LoadMoreListener;
 import com.price.take_new.utils.listener.RVOnItemClickListener;
+import com.price.take_new.utils.listener.ScrollRecyclerViewListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +40,7 @@ import java.util.List;
  */
 public class MyExpressActivity extends HomeBaseActivity implements SwipeRefreshLayout.OnRefreshListener, RVOnItemClickListener, IMyExpressView {
 
+    private static final String TAG = "myExpressActivity";
     private TextView loadMore;
 
     private List<MyDeliveryOrderDatum> mData;
@@ -49,12 +55,15 @@ public class MyExpressActivity extends HomeBaseActivity implements SwipeRefreshL
     private String page = "0";
 
     private int pageCount = 0;
+    private int currentPage = 0;
 
     private boolean isLoading;
+    private boolean isEnd;
 
     private int isSelected;
 
     private static int index;
+    private ScrollRecyclerViewListener mScrollListener;
 
     @Override
     public void initView() {
@@ -81,11 +90,10 @@ public class MyExpressActivity extends HomeBaseActivity implements SwipeRefreshL
         return R.layout.activity_my_express;
     }
 
-    private void loadData(int index) {
-        pageCount = (index == Constant.REFRESHMORE ? 0:pageCount);
+    private void loadData(int index,int currentPage) {
         this.index = index;
-        Log.e("this.index",index+"  "+pageCount);
-        page = pageCount+"";
+        Log.e(TAG,"currentPage::"+currentPage+","+"pageCount::"+pageCount+","+"page::"+page);
+        page = currentPage+"";
         presenter.getMyDelivery(token,page,index);
     }
 
@@ -94,6 +102,18 @@ public class MyExpressActivity extends HomeBaseActivity implements SwipeRefreshL
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.express_help_refresh);
         final LinearLayoutManager manager = new LinearLayoutManager(this);
         rv_list.setLayoutManager(manager);
+        mScrollListener = new ScrollRecyclerViewListener(manager) {
+            @Override
+            public void onLoadMore(int currentPage) {
+                if (!isLoading && !isEnd) {
+//                    Toast.makeText(getActivity(),"正在加载...",Toast.LENGTH_LONG).show();
+                    isLoading = true;
+//                    loadMore.setVisibility(View.INVISIBLE);
+                    loadData(Constant.LOADMORE, currentPage);
+                }
+            }
+        };
+        rv_list.addOnScrollListener(mScrollListener);
         rv_list.setItemAnimator( new DefaultItemAnimator());
         refreshLayout.setOnRefreshListener(this);
         presenter = new MyExpressPresenter(this);
@@ -101,7 +121,7 @@ public class MyExpressActivity extends HomeBaseActivity implements SwipeRefreshL
 
     private void initDatas() {
         mData = new ArrayList<>();
-        loadData(Constant.REFRESHMORE);
+        loadData(Constant.REFRESHMORE,0);
         mAdapter = new PackageMyAdapter(this,mData,R.layout.item_help_express,token);
         mAdapter.setOnItemListener(this);
         mAdapter.setLoadMoreListener(new LoadMoreListener() {
@@ -118,7 +138,7 @@ public class MyExpressActivity extends HomeBaseActivity implements SwipeRefreshL
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode){
             case Constant.SUCCESS_REFRESH:
-                loadData(Constant.REFRESHMORE);
+                loadData(Constant.REFRESHMORE,0);
                 break;
         }
     }
@@ -128,7 +148,7 @@ public class MyExpressActivity extends HomeBaseActivity implements SwipeRefreshL
     public void onRefresh() {
         if(!isLoading){
             isLoading = true;
-            loadData(Constant.REFRESHMORE);
+            loadData(Constant.REFRESHMORE,0);
         }
     }
 
@@ -136,25 +156,18 @@ public class MyExpressActivity extends HomeBaseActivity implements SwipeRefreshL
     public void onItemClick(View view, int position) {
         Intent intent = new Intent(this,MyExpressDetailActivity.class);
         int pos = position;
-        Log.e("myexpress_pos",pos+"");
         isSelected = pos;
         if(position == mData.size()){
-            if(!isLoading){
-                isLoading = true;
-                loadMore.setVisibility(View.GONE);
-                loadData(Constant.LOADMORE);
-            }
-            Toast.makeText(this,"load",Toast.LENGTH_LONG).show();
             return;
         }
         if(position<mData.size()){
+            MyDeliveryOrderDatum data = mData.get(pos);
             intent.putExtra(Constant.KEY_TOKEN,token);
             intent.putExtra(Constant.KEY_ORDER_ID,mData.get(pos).getId());
             intent.putExtra(Constant.KEY_COMPANY,mData.get(pos).getCompany());
             intent.putExtra(Constant.KEY_PLACE,mData.get(pos).getPlace());
             intent.putExtra(Constant.KEY_ADDRESS,mData.get(pos).getAddress());
             intent.putExtra(Constant.KEY_SMS,mData.get(pos).getSms_content());
-            Log.e("address",mData.get(pos).getAddress()==null?"yes":"no");
             intent.putExtra(Constant.KEY_TAKE_TIME,mData.get(pos).getTakeTime());
             String status = mData.get(pos).getStatus();
             if(status==null)
@@ -165,8 +178,13 @@ public class MyExpressActivity extends HomeBaseActivity implements SwipeRefreshL
             if(status.equals("2")){
                 String accepter_id = "";
                 accepter_id = mData.get(pos).getAccepterId();
-                Log.e("accepter_id",accepter_id);
                 intent.putExtra(Constant.KEY_ACCEPTER_ID,accepter_id);
+                if(TextUtils.isEmpty(data.getAccepterName())){
+                    Log.e(TAG,"accetername is null");
+                }else{
+                    Log.e(TAG,data.getAccepterName());
+
+                }
                 intent.putExtra(Constant.KEY_ACCEPTER_NAME,mData.get(pos).getAccepterName());
             }
             startActivity(intent);
@@ -181,17 +199,28 @@ public class MyExpressActivity extends HomeBaseActivity implements SwipeRefreshL
 
     @Override
     public void showMyData(List<MyDeliveryOrderDatum> data) {
+        Log.e(TAG,"page::"+page);
         isLoading = false;
-        mAdapter.clear();
-        Log.e("index",index+"");
         if(index == Constant.REFRESHMORE){
-            mData.addAll(0,data);
-        } else{
+            mAdapter.clear();
+            Log.e(TAG,"add to head");
+            mData.clear();
             mData.addAll(data);
-            pageCount+=1;
+            mScrollListener.setCurrentPage(0);
+            isEnd = false;
+            Log.e(TAG,"下拉刷新完成");
+        } else{
+            Log.e(TAG,"add to end");
+            mData.addAll(data);
+            mScrollListener.setloadFinish(true);
+            Log.e(TAG,"上拉加载完成,page"+currentPage);
         }
-        Log.e("size",""+mData.size());
         mAdapter.notifyDataSetChanged();
+        Log.e(TAG,"currentItem :"+mAdapter.getItemCount());
+        Log.e(TAG,"page:"+page+",size:"+data.size());
+        for(MyDeliveryOrderDatum datum:data){
+            Log.e(TAG,datum.getCreated());
+        }
     }
 
     @Override

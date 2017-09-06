@@ -30,7 +30,7 @@ public class GetExpressPresenter {
             public void onSuccess(List<DeliveryDatum> deliveryDatum, int success) {
                 expressView.hideLoading(index);
                 expressView.showData(deliveryDatum);
-                expressView.showToast("finish");
+                expressView.showToast("加载成功");
             }
 
             @Override

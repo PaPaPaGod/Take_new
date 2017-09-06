@@ -10,11 +10,12 @@
     android:layout_marginBottom="10dp">
 
     <android.support.v7.widget.CardView
+        android:layout_weight="3"
         app:cardBackgroundColor="@color/color1"
         app:cardElevation="4dp"
         app:cardCornerRadius="12dp"
         android:id="@+id/main_card"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -58,7 +59,7 @@
             <LinearLayout
                 android:id="@+id/main_express"
                 android:orientation="vertical"
-                android:layout_width="199dp"
+                android:layout_width="210dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 >
@@ -97,6 +98,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="13dp"
                         android:textColor="#0f0f0f"
+                        android:ellipsize="end"
+                        android:lines="1"
                         android:text="takenLocation"
                         android:id="@+id/main_express_item_place" />
                 </LinearLayout>
@@ -113,9 +116,10 @@
                         android:text="包裹描述"/>
 
                     <TextView
-                        android:lines="5"
+                        android:lines="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:ellipsize="end"
                         android:layout_marginLeft="13dp"
                         android:textColor="#0f0f0f"
                         android:id="@+id/main_express_item_description" />
@@ -124,11 +128,11 @@
             </LinearLayout>
 
             <RelativeLayout
+                android:layout_gravity="center"
                 android:id="@+id/main_state"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="0.77">
+                android:layout_marginLeft="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -143,7 +147,7 @@
                         android:id="@+id/main_express_item_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="￥有赏金"
+                        android:text="￥有奖励"
                         android:textColor="#ebd731"
                         android:textSize="10dp"
                         android:textStyle="bold" />

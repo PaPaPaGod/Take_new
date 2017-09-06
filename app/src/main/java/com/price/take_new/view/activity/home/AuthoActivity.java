@@ -68,9 +68,11 @@ public class AuthoActivity extends HomeBaseActivity implements View.OnClickListe
 
     @Override
     public void showToast(String msg, int code) {
-        Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
         if(code == Constant.SUCCESS_WITH_MSG){
+            Toast.makeText(this,"已提交审核，请耐心等待",Toast.LENGTH_LONG).show();
             finish();
+            return;
         }
+        Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
     }
 }

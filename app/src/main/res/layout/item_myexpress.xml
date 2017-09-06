@@ -81,6 +81,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
+                android:lines="1"
+                android:ellipsize="end"
                 android:textColor="#0f0f0f"
                 android:text="takenLocation"/>
         </LinearLayout>
@@ -100,6 +102,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
                 android:textColor="#0f0f0f"
+                android:ellipsize="end"
+                android:lines="1"
                 android:text="decripiton"
                 android:id="@+id/tv_myexpress_decription"/>
         </LinearLayout>

@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import com.price.take_new.service.viewService.IGetExpressView;
 import com.price.take_new.utils.adapter.RVPackageAdapter;
 import com.price.take_new.utils.listener.LoadMoreListener;
 import com.price.take_new.utils.listener.RVOnItemClickListener;
+import com.price.take_new.utils.listener.ScrollRecyclerViewListener;
 import com.price.take_new.view.activity.home.AuthoActivity;
 import com.price.take_new.view.activity.home.ExpressDetailActivity;
 import com.price.take_new.view.activity.home.HomeActivity;
@@ -54,9 +56,11 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
     private String page = "0";
 
     private int pageCount = 0;
-    private boolean isLoading;
+    private int currentPage = 0;
 
-    private int result;
+    private boolean isEnd = false;
+
+    private boolean isLoading;
 
     private RecyclerView rv_package_list;
     private SwipeRefreshLayout refresh;
@@ -66,10 +70,15 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
 
     private FloatingActionButton fab;
     private TextView loadMore;
+    private TextView end;
 
     private GetExpressPresenter getExpressPresenter;
 
     private static int index = 0;
+
+    private static String TAG = "express_tab";
+
+    private ScrollRecyclerViewListener mScrollListener;
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
@@ -81,6 +90,13 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
         initListView(view);
         initData();
         rv_package_list.setAdapter(mAdapter);
+//        btn_getNext = (Button) view.findViewById(R.id.btn_getNext);
+//        btn_getNext.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                loadData(Constant.LOADMORE,currentPage++);
+//            }
+//        });
     }
 
     private static Express_Plaza_Tab_Fragment instance = new Express_Plaza_Tab_Fragment();
@@ -105,6 +121,20 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
         //设置增加或删除条目的动画
         rv_package_list.setItemAnimator(new DefaultItemAnimator());
         refresh.setOnRefreshListener(this);
+        mScrollListener = new ScrollRecyclerViewListener(manager) {
+            @Override
+            public void onLoadMore(int currentPage) {
+                if(!isLoading && !isEnd){
+//                    Toast.makeText(getActivity(),"正在加载...",Toast.LENGTH_LONG).show();
+                    isLoading = true;
+//                    loadMore.setVisibility(View.INVISIBLE);
+                    loadData(Constant.LOADMORE,currentPage);
+                }
+            }
+        };
+        rv_package_list.addOnScrollListener(mScrollListener);
+
+
         fab = (FloatingActionButton) view.findViewById(R.id.floatingactionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,10 +143,8 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
                     intent.putExtra(Constant.KEY_TOKEN, token);
                     startActivityForResult(intent,2);
                 }
-//                addFragment(PublishExpressActivity.newInstance());
         });
     }
-
 
     /*
     * initData方法将初始化mData和mAdapter
@@ -124,8 +152,7 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
     private void initData() {
         mData = new ArrayList<>();
         mAdapter = new RVPackageAdapter(getActivity(),mData,R.layout.main_express_item,token);
-        loadData(Constant.REFRESHMORE);
-        Log.e("mData_init",mData.size()+"");
+        loadData(Constant.REFRESHMORE,0);
         mAdapter.setOnItemListener(this);
         mAdapter.setLoadMoreListener(new LoadMoreListener() {
             @Override
@@ -140,11 +167,12 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
     * @index 标识，index=LOADMORE则是点击加载更多，REFRESHMORE为下拉刷新
     * 联网完成数据的填充，后期将加入本地数据库存储功能
     * */
-    private void loadData(int index) {
-        pageCount = (index == Constant.REFRESHMORE ? 0:pageCount);
+    private void loadData(int index,int currentPage) {
+        this.currentPage = currentPage;
+//        currentPage = (index == Constant.REFRESHMORE ? 0:pageCount+1);
         this.index = index;
-        Log.e("this.index",index+"  "+pageCount);
-        page = pageCount+"";
+        Log.e(TAG,"currentPage::"+currentPage+","+"pageCount::"+pageCount+","+"page::"+page);
+        page = currentPage+"";
         getExpressPresenter.getExpress(token,page,index);
     }
 
@@ -153,14 +181,13 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode){
             case RESULT_OK:
-                Log.e("expressTab","is ok?  "+isToken);
-//            loadData(Constant.REFRESHMORE);
+                Log.e(TAG,"token is ok?  "+isToken);
                 mData.remove(isToken);
                 mAdapter.notifyDataSetChanged();
                 break;
             case 22:
-                Log.e("expressTab","publish finish");
-                loadData(Constant.REFRESHMORE);
+                Log.e(TAG,"publish finish");
+                loadData(Constant.REFRESHMORE,0);
                 break;
         }
         if(resultCode == RESULT_OK){
@@ -170,14 +197,13 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
 
     @Override
     public void onItemClick(View view, int position) {
-        Log.e("click",position+"   ");
         if(position == mData.size()){
-            if(!isLoading){
-                isLoading = true;
-                loadMore.setVisibility(View.GONE);
-                loadData(Constant.LOADMORE);
-            }
-            Toast.makeText(getActivity(),"load",Toast.LENGTH_LONG).show();
+//            if(!isLoading){
+//                isLoading = true;
+//                loadMore.setVisibility(View.GONE);
+//                loadData(Constant.LOADMORE,currentPage);
+//            }
+//            Toast.makeText(getActivity(),"正在加载...",Toast.LENGTH_LONG).show();
             return;
         }
         if(!ManagerData.getAuth(getActivity())){
@@ -197,7 +223,8 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
             intent.putExtra(Constant.KEY_DESCRIPTION,data.getDes());
             intent.putExtra(Constant.KEY_PRICE,data.getPrice());
             isToken = position;
-            Log.e("istoken",position+"");
+            Log.e(TAG,"position :"+position);
+            Log.e(TAG,"price :"+data.getPrice());
             startActivityForResult(intent,1);
 //            startActivity(intent);
         }
@@ -207,14 +234,19 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
     public void onRefresh() {
         if(!isLoading){
             isLoading = true;
-            loadData(Constant.REFRESHMORE);
+            loadData(Constant.REFRESHMORE,0);
         }
     }
 
     @Override
     public void showToast(String msg) {
-        Toast.makeText(getActivity(),msg,Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(),msg,Toast.LENGTH_SHORT).show();
         isLoading = false;
+        if(msg.equals("没有更多数据") && index == Constant.LOADMORE){
+            isEnd = true;
+//            loadMore.setVisibility(View.INVISIBLE);
+            Log.e(TAG,"is end,"+"mData.size="+mData.size());
+        }
     }
 
     @Override
@@ -243,18 +275,28 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
 
     @Override
     public void showData(List<DeliveryDatum> delivery) {
-//        loadMore.setVisibility(View.VISIBLE);
+        Log.e(TAG,"page::"+page);
         isLoading = false;
-        mAdapter.clear();
-        Log.e("index",index+"");
         if(index == Constant.REFRESHMORE){
-            mData.addAll(0,delivery);
-        } else{
+            mAdapter.clear();
+            Log.e(TAG,"add to head");
+            mData.clear();
             mData.addAll(delivery);
-            pageCount+=1;
+            mScrollListener.setCurrentPage(0);
+            isEnd = false;
+            Log.e(TAG,"下拉刷新完成");
+        } else{
+            Log.e(TAG,"add to end");
+            mData.addAll(delivery);
+            mScrollListener.setloadFinish(true);
+            Log.e(TAG,"上拉加载完成,page"+currentPage);
         }
-        Log.e("size",""+mData.size());
         mAdapter.notifyDataSetChanged();
+        Log.e(TAG,"currentItem :"+mAdapter.getItemCount());
+        Log.e(TAG,"page:"+page+",size:"+delivery.size());
+        for(DeliveryDatum datum:delivery){
+            Log.e(TAG,datum.getName());
+        }
     }
 
     private void check(){
@@ -277,4 +319,6 @@ public class Express_Plaza_Tab_Fragment extends BaseFragment
                 }).create();
         dialog.show();
     }
+    Button btn_getNext;
+
 }

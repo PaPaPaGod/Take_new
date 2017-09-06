@@ -52,20 +52,19 @@ public class RVPackageAdapter<T> extends CommonRecyclerViewAdapter {
                     myViewHolder.setText(R.id.main_express_item_token_status,"等待接单中");
                     break;
                 default:
-                    myViewHolder.setText(R.id.main_express_item_token_status,"已完成");
+                    myViewHolder.setText(R.id.main_express_item_token_status,"已接单");
                     break;
-//                case "2":
-//                    myViewHolder.setText(R.id.main_express_item_token_status,"已完成");
-//                    break;
             }
             if(item.getPrice().equals("0")){
-                myViewHolder.itemView.findViewById(R.id.main_express_item_status).setVisibility(View.GONE);
+                myViewHolder.itemView.findViewById(R.id.main_express_item_status).setVisibility(View.INVISIBLE);
             }else{
                 myViewHolder.itemView.findViewById(R.id.main_express_item_status).setVisibility(View.VISIBLE);
             }
         }else{
             View view = holder.itemView.findViewById(R.id.footer_load_more);
+//            View end_view = holder.itemView.findViewById(R.id.footer_end);
             loadMoreListener.setLoad(view);
+//            loadMoreListener.setEnd(end_view);
         }
     }
 }

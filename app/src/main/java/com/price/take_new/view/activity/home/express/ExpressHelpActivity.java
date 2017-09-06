@@ -28,6 +28,7 @@ import com.price.take_new.service.viewService.IMyExpressView;
 import com.price.take_new.utils.adapter.PackageHelpAdapter;
 import com.price.take_new.utils.listener.LoadMoreListener;
 import com.price.take_new.utils.listener.RVOnItemClickListener;
+import com.price.take_new.utils.listener.ScrollRecyclerViewListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,7 @@ import java.util.List;
  */
 public class ExpressHelpActivity extends HomeBaseActivity implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener, RVOnItemClickListener, IMyExpressView {
 
+    private static final String TAG = "ExpressHelpActivity";
     private TextView loadMore;
 
     private List<MyHelpOrderDatum> mData;
@@ -53,10 +55,13 @@ public class ExpressHelpActivity extends HomeBaseActivity implements View.OnClic
     private int pageCount = 0;
 
     private boolean isLoading;
+    private boolean isEnd;
 
     private static int index;
 
     private MyExpressPresenter presenter;
+    private ScrollRecyclerViewListener mScrollListener;
+    private int currentPage=0;
 
 
     @Override
@@ -85,11 +90,11 @@ public class ExpressHelpActivity extends HomeBaseActivity implements View.OnClic
         }
     }
 
-    private void loadData(int index) {
-        pageCount = (index == Constant.REFRESHMORE ? 0:pageCount);
+    private void loadData(int index,int currentPage) {
+        this.currentPage = currentPage;
         this.index = index;
-        Log.e("this.index",index+"  "+pageCount);
-        page = pageCount+"";
+        Log.e(TAG,"currentPage::"+currentPage+","+"pageCount::"+pageCount+","+"page::"+page);
+        page = currentPage+"";
         presenter.getHelpDelivery(token,page,index);
     }
 
@@ -111,6 +116,18 @@ public class ExpressHelpActivity extends HomeBaseActivity implements View.OnClic
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.express_help_refresh);
         final LinearLayoutManager manager = new LinearLayoutManager(this);
         rv_list.setLayoutManager(manager);
+        mScrollListener = new ScrollRecyclerViewListener(manager) {
+            @Override
+            public void onLoadMore(int currentPage) {
+                if (!isLoading && !isEnd) {
+//                    Toast.makeText(getActivity(),"正在加载...",Toast.LENGTH_LONG).show();
+                    isLoading = true;
+//                    loadMore.setVisibility(View.INVISIBLE);
+                    loadData(Constant.LOADMORE, currentPage);
+                }
+            }
+        };
+        rv_list.addOnScrollListener(mScrollListener);
         rv_list.setItemAnimator( new DefaultItemAnimator());
         refreshLayout.setOnRefreshListener(this);
     }
@@ -118,7 +135,7 @@ public class ExpressHelpActivity extends HomeBaseActivity implements View.OnClic
     private void initDatas() {
         mData = new ArrayList<>();
         mAdapter = new PackageHelpAdapter(this,mData,R.layout.item_help_express,token);
-        loadData(Constant.REFRESHMORE);
+        loadData(Constant.REFRESHMORE,0);
         mAdapter.setOnItemListener(this);
         mAdapter.setLoadMoreListener(new LoadMoreListener() {
             @Override
@@ -133,7 +150,7 @@ public class ExpressHelpActivity extends HomeBaseActivity implements View.OnClic
     public void onRefresh() {
         if(!isLoading){
             isLoading = true;
-            loadData(Constant.REFRESHMORE);
+            loadData(Constant.REFRESHMORE,0);
         }
     }
 
@@ -141,14 +158,7 @@ public class ExpressHelpActivity extends HomeBaseActivity implements View.OnClic
 
     @Override
     public void onItemClick(View view, int position) {
-        Log.e("click",position+"   ");
         if(position == mData.size()){
-            if(!isLoading){
-                isLoading = true;
-                loadMore.setVisibility(View.GONE);
-                loadData(Constant.LOADMORE);
-            }
-            Toast.makeText(this,"load",Toast.LENGTH_LONG).show();
             return;
         }
         if(position<mData.size()){
@@ -170,17 +180,28 @@ public class ExpressHelpActivity extends HomeBaseActivity implements View.OnClic
 
     @Override
     public void showHelpData(List<MyHelpOrderDatum> data) {
+        Log.e(TAG,"page::"+page);
         isLoading = false;
-        mAdapter.clear();
-        Log.e("index",index+"");
         if(index == Constant.REFRESHMORE){
-            mData.addAll(0,data);
-        } else{
+            mAdapter.clear();
+            Log.e(TAG,"add to head");
+            mData.clear();
             mData.addAll(data);
-            pageCount+=1;
+            mScrollListener.setCurrentPage(0);
+            isEnd = false;
+            Log.e(TAG,"下拉刷新完成");
+        } else{
+            Log.e(TAG,"add to end");
+            mData.addAll(data);
+            mScrollListener.setloadFinish(true);
+            Log.e(TAG,"上拉加载完成,page"+currentPage);
         }
-        Log.e("size",""+mData.size());
         mAdapter.notifyDataSetChanged();
+        Log.e(TAG,"currentItem :"+mAdapter.getItemCount());
+        Log.e(TAG,"page:"+page+",size:"+data.size());
+        for(MyHelpOrderDatum datum:data){
+            Log.e(TAG,datum.getCreated());
+        }
     }
 
     @Override

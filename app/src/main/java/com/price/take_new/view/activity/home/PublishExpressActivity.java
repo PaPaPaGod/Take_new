@@ -91,7 +91,7 @@ public class PublishExpressActivity extends HomeBaseActivity implements View.OnC
                 if (cb_getMoney.isChecked()) {
                     money_layout.setVisibility(View.VISIBLE);
                 } else {
-                    money_layout.setVisibility(View.GONE);
+                    money_layout.setVisibility(View.INVISIBLE);
                 }
                 break;
             case R.id.announce_button:
@@ -122,7 +122,15 @@ public class PublishExpressActivity extends HomeBaseActivity implements View.OnC
                                 }).create();
                         dialog.show();
                     }else {
-                        presenter.publish(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
+                        AlertDialog dialog = new AlertDialog.Builder(this)
+                                .setTitle("温馨提示").setMessage(R.string.publish_notification_tips)
+                                .setPositiveButton("是",new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        presenter.publish(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
+                                    }
+                                }).create();
+                        dialog.show();
                     }
                 }
                 break;

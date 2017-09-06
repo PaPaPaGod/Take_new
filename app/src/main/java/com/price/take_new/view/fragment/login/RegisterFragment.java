@@ -1,5 +1,6 @@
 package com.price.take_new.view.fragment.login;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,8 @@ public class RegisterFragment extends BaseFragment implements IRegisterView, Vie
 
     private RegisterPresenter presenter;
 
+    ProgressDialog registerDialog;
+
     private static RegisterFragment instance = new RegisterFragment();
 
     @Override
@@ -36,6 +39,11 @@ public class RegisterFragment extends BaseFragment implements IRegisterView, Vie
         btn_commit = (Button) view.findViewById(R.id.btn_finish_register);
         btn_commit.setOnClickListener(this);
         presenter = new RegisterPresenter(this);
+        registerDialog = ProgressDialog.show(getActivity(),
+                getResources().getString(R.string.RegisterProgressDialogTitle),
+                getResources().getString(R.string.RegisterProgressDialogContent));
+        registerDialog.dismiss();
+        registerDialog.setCancelable(true);
     }
 
     @Override
@@ -59,6 +67,16 @@ public class RegisterFragment extends BaseFragment implements IRegisterView, Vie
     }
 
     @Override
+    public void showProgressDialog() {
+        registerDialog.show();
+    }
+
+    @Override
+    public void hideLoading() {
+        registerDialog.dismiss();
+    }
+
+    @Override
     public void onClick(View v) {
         String phone = et_phone.getText().toString();
         String password = et_password.getText().toString();
@@ -68,6 +86,7 @@ public class RegisterFragment extends BaseFragment implements IRegisterView, Vie
         if(!isTrue){
             return;
         }
+        registerDialog.show();
         presenter.register(phone, password);
     }
 }

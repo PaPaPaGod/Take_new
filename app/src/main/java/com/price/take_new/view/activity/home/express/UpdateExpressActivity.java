@@ -38,6 +38,12 @@ public class UpdateExpressActivity extends HomeBaseActivity implements View.OnCl
 
     private String token;
     private String order_id;
+    private String company;
+    private String address;
+    private String take_time;
+    private String place;
+    private String description;
+    private String money;
 
     private ManagerExpressPresenter presenter;
 
@@ -47,9 +53,16 @@ public class UpdateExpressActivity extends HomeBaseActivity implements View.OnCl
         spinner_company.setOnItemSelectedListener(this);
 
         et_des = (EditText) findViewById(R.id.decription_editText);
+        et_des.setText(description);
+
         et_take_place = (EditText) findViewById(R.id.taken_location_editText);
+        et_take_place.setText(address);
+
         et_trade = (EditText) findViewById(R.id.trade_position_editText);
+        et_trade.setText(place);
+
         et_money = (EditText) findViewById(R.id.amount);
+        et_money.setText(money);
 //        et_take_time = (EditText) findViewById(R.id.taken_time_editText);
 
         cb_getMoney = (CheckBox) findViewById(R.id.checkBox);
@@ -78,9 +91,15 @@ public class UpdateExpressActivity extends HomeBaseActivity implements View.OnCl
     protected void handleIntent(Intent intent) {
         super.handleIntent(intent);
         if(intent!=null){
-          token = getIntent().getStringExtra(Constant.KEY_TOKEN);
-          order_id = getIntent().getStringExtra(Constant.KEY_ORDER_ID);
-          data = new String[7];
+            token = getIntent().getStringExtra(Constant.KEY_TOKEN);
+            order_id = getIntent().getStringExtra(Constant.KEY_ORDER_ID);
+            company = intent.getStringExtra(Constant.KEY_COMPANY);
+            place = intent.getStringExtra(Constant.KEY_PLACE);
+            take_time = intent.getStringExtra(Constant.KEY_TAKE_TIME);
+            address = intent.getStringExtra(Constant.KEY_ADDRESS);
+            description = intent.getStringExtra(Constant.KEY_DESCRIPTION);
+            money = intent.getStringExtra(Constant.KEY_PRICE);
+            data = new String[7];
         }
     }
 
@@ -98,7 +117,7 @@ public class UpdateExpressActivity extends HomeBaseActivity implements View.OnCl
         switch (view.getId()){
             case R.id.checkBox:
                 if(!cb_getMoney.isChecked()){
-                    money_layout.setVisibility(View.GONE);
+                    money_layout.setVisibility(View.INVISIBLE);
                 }
                 else
                     money_layout.setVisibility(View.VISIBLE);

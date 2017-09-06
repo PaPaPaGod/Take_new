@@ -69,8 +69,29 @@
                             android:textColor="#0f0f0f"
                             android:textSize="18dp"
                             android:layout_marginTop="3dp"
-                            android:text="New Text"
+                            android:text="专业"
                             android:id="@+id/express_my_detail_major" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="35dp">
+                        <TextView
+                            android:text="@string/expressMajor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#0f0f0f"
+                            android:textSize="18dp"
+                            android:layout_marginTop="3dp"
+                            android:text="手机号码"
+                            android:id="@+id/express_my_detail_helper_phone" />
                     </LinearLayout>
                 </LinearLayout>
 

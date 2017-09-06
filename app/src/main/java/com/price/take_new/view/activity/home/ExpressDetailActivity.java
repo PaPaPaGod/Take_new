@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,6 +67,8 @@ public class ExpressDetailActivity extends HomeBaseActivity implements View.OnCl
     private String description;
     private String money;
 
+    private LinearLayout layout_reward;
+
     @Override
     protected void handleIntent(Intent intent) {
         super.handleIntent(intent);
@@ -86,6 +89,7 @@ public class ExpressDetailActivity extends HomeBaseActivity implements View.OnCl
             address = intent.getStringExtra(Constant.KEY_ADDRESS);
             description = intent.getStringExtra(Constant.KEY_DESCRIPTION);
             money = intent.getStringExtra(Constant.KEY_PRICE);
+
         }
     }
 
@@ -99,6 +103,11 @@ public class ExpressDetailActivity extends HomeBaseActivity implements View.OnCl
         tv_place = (TextView) findViewById(R.id.express_trade_detail);
         tv_money = (TextView) findViewById(R.id.express_trade_bounty_price);
         tv_description = (TextView) findViewById(R.id.express_trade_description);
+
+        layout_reward = (LinearLayout) findViewById(R.id.layout_reward);
+        if(money.equals("0")){
+            layout_reward.setVisibility(View.INVISIBLE);
+        }
 
         takeButton = (Button) findViewById(R.id.take_button);
         takeButton.setOnClickListener(this);
@@ -114,7 +123,12 @@ public class ExpressDetailActivity extends HomeBaseActivity implements View.OnCl
         tv_take_time.setText(take_time);
         tv_address.setText(address);
         tv_description.setText(description);
-        tv_money.setText("￥ "+money);
+
+        if(money.equals("0")){
+            tv_money.setVisibility(View.INVISIBLE);
+        }else{
+            tv_money.setText("￥ "+money);
+        }
     }
 
     @Override

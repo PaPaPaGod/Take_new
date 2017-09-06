@@ -158,7 +158,6 @@ public class Personal_Center_Tab_Fragment extends BaseFragment implements IGetUs
                 ManagerUserInfo.clear(getActivity());
                 ManagerData.cacheAuth(getActivity(),false);
                 RongIM.getInstance().logout();
-                RongIM.getInstance().disconnect();
                 RongIM.getInstance().clearConversations();
                 startActivity(new Intent(getActivity(), SplashActivity.class));
                 getHoldingActivity().finish();

@@ -25,12 +25,14 @@ public class RegisterPresenter {
         registerModel.register(phone, password, new OnRegisterListener() {
             @Override
             public void onSuccess(String msg, int hint) {
+                registerView.hideLoading();
                 registerView.showToast(msg,Constant.SUCCESS_BACK);
             }
 
             @Override
             public void onError(Throwable throwable, int error) {
                 registerView.showToast(throwable.getMessage(),error);
+                registerView.hideLoading();
             }
         });
     }

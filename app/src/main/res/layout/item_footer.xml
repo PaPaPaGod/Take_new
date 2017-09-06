@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:gravity="center"
-
     android:layout_height="40sp">
 
     <TextView
         android:visibility="visible"
         android:gravity="center_horizontal"
         style="@style/SmallGreyTextView"
-        android:text="@string/footer_load_more"
+        android:text="@string/end"
         android:id="@+id/footer_load_more"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <ProgressBar
-        android:visibility="visible"
         android:layout_marginRight="6dp"
         android:id="@+id/footer_progressBar"
         style="?android:attr/progressBarStyleSmall"
@@ -25,7 +24,6 @@
 
     <TextView
         android:id="@+id/footer_loading"
-        android:visibility="visible"
         style="@style/SmallGreyTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

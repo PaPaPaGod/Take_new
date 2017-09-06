@@ -35,6 +35,7 @@ public class MyExpressDetailActivity extends HomeBaseActivity implements View.On
     TextView tv_place;
     TextView tv_time;
     TextView tv_address;
+    TextView tv_phone;
 
     Button update;
     Button delete;
@@ -54,6 +55,8 @@ public class MyExpressDetailActivity extends HomeBaseActivity implements View.On
     private String time;
     private String address;
     private String sms_content;
+    private String phone;
+
 //    private String
     private TextView hand_over_time;
     private TextView description;
@@ -63,6 +66,8 @@ public class MyExpressDetailActivity extends HomeBaseActivity implements View.On
 
     private ManagerExpressPresenter presenter;
     private GetOtherUserInfoPresenter otherUserInfoPresenter;
+
+    private static final String TAG = "MyExpressDetailActivity";
 
     @Override
     public int getContentViewId() {
@@ -102,7 +107,7 @@ public class MyExpressDetailActivity extends HomeBaseActivity implements View.On
                     status_result = "";
                     break;
             }
-            Log.e("result_status",status_result==null?"yes":"no");
+//            Log.e(TAG,"result_status::"+status_result==null?"yes":"no");
         }
     }
 
@@ -114,6 +119,7 @@ public class MyExpressDetailActivity extends HomeBaseActivity implements View.On
         tv_status.setText(status_result);
         if(status.equals("2")) {
             tv_name.setText(accepterName);
+//            tv_major.setText(accepterMajor);
         }
     }
 
@@ -123,15 +129,13 @@ public class MyExpressDetailActivity extends HomeBaseActivity implements View.On
 
         tv_name = (TextView) findViewById(R.id.express_my_detail_name);
         tv_major = (TextView) findViewById(R.id.express_my_detail_major);
+        tv_phone = (TextView) findViewById(R.id.express_my_detail_helper_phone);
 
         tv_company = (TextView) findViewById(R.id.express_my_detail_company);
         tv_place = (TextView) findViewById(R.id.express_my_detail_taken_location);
         tv_time = (TextView) findViewById(R.id.express_my_detail_taken_time);
-//        hand_over_time = (TextView) findViewById(R.id.express_my_detail_finish_time);
         tv_address = (TextView) findViewById(R.id.express_my_detail_finish_location);
         tv_status = (TextView) findViewById(R.id.express_my_detail_status);
-//        description = (TextView) findViewById(R.id.express_my_detail_description);
-//        description = (TextView) findViewById(R.id.express_my_detail_bounty);
         tv_sms = (TextView) findViewById(R.id.express_my_detail_sms);
         tv_sms.setOnClickListener(this);
 
@@ -164,6 +168,10 @@ public class MyExpressDetailActivity extends HomeBaseActivity implements View.On
                     Intent intent = new Intent(this,UpdateExpressActivity.class);
                     intent.putExtra(Constant.KEY_TOKEN,token);
                     intent.putExtra(Constant.KEY_ORDER_ID,order_id);
+                    intent.putExtra(Constant.KEY_PLACE,place);
+                    intent.putExtra(Constant.KEY_ADDRESS,address);
+//                    intent.putExtra(Constant.KEY_DESCRIPTION,description);
+//                    intent.putExtra(Constant.KEY_PRICE,money);
                     startActivity(intent);
                 }
                 else{
@@ -235,9 +243,12 @@ public class MyExpressDetailActivity extends HomeBaseActivity implements View.On
     @Override
     public void onBind(OtherUserInfoData info) {
         accepterMajor = info.getMajor();
-        Log.e("major",accepterMajor);
+        phone = info.getPhoneNum();
         if(accepterMajor!=null && status.equals("2")){
             tv_major.setText(accepterMajor);
+        }
+        if(phone!=null && status.equals("2")){
+            tv_phone.setText(phone);
         }
     }
 

@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -49,6 +50,7 @@ import io.rong.imlib.model.Conversation;
  * Created by price on 2/11/2017.
  */
 public class HomeActivity extends AppActivity implements IGetUserInfoView, View.OnClickListener {
+    private static final String TAG = "homeactivity";
     private TabLayout tabLayout;
     private ViewPager mViewPager;
 
@@ -116,7 +118,6 @@ public class HomeActivity extends AppActivity implements IGetUserInfoView, View.
     @Override
     protected BaseFragment getFirstFragment() {
         return null;
-//        return Express_Plaza_Tab_Fragment.newInstance();
     }
 
     @Override
@@ -127,11 +128,6 @@ public class HomeActivity extends AppActivity implements IGetUserInfoView, View.
         ry_token = bundle.getString(Constant.KEY_RONG_TOKEN);
         presenter = new GetUserInfoPresenter(this);
         presenter.getUserInfo(token,this);
-//        if(ManagerUserInfo.isNull(this)) {
-//            presenter.getUserInfo(token);
-//        }else{
-//            info = ManagerUserInfo.getInfo(this);
-//        }
         sendToFragment = new Bundle();
         sendToFragment.putString(Constant.KEY_TOKEN,token);
     }
@@ -171,37 +167,6 @@ public class HomeActivity extends AppActivity implements IGetUserInfoView, View.
             tab.setCustomView(getTabView(i));
         }
         addUnReadMessageCountChanged();
-//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                if (tab.equals(tabLayout.getTabAt(1))){
-//                    ry_toolbar.setVisibility(View.VISIBLE);
-//                }else{
-//                    ry_toolbar.setVisibility(View.GONE);
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//                if (tab.equals(tabLayout.getTabAt(1))){
-//                    ry_toolbar.setVisibility(View.VISIBLE);
-//                }else{
-//                    ry_toolbar.setVisibility(View.GONE);
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//                if (tab.equals(tabLayout.getTabAt(1))){
-//                    ry_toolbar.setVisibility(View.VISIBLE);
-//                }else{
-//                    ry_toolbar.setVisibility(View.GONE);
-//
-//                }
-//            }
-//        });
     }
 
     private void addUnReadMessageCountChanged() {
@@ -243,12 +208,6 @@ public class HomeActivity extends AppActivity implements IGetUserInfoView, View.
         if(info!=null){
             this.info = info;
             Log.e("home_info",info.getName());
-//            RongIM.getInstance().setCurrentUserInfo(new io.rong.imlib.model.UserInfo(RongIM.getInstance().getCurrentUserId(), info.getName(),
-//                    Uri.parse("file://res/mipmap/male.png"))
-//            );
-//            RongIM.getInstance().setMessageAttachedUserInfo(true);
-//            ManagerUserInfo.cacheInfo(this,info);
-//            listener.onChange(info);
           Rong.connect(ry_token);
         }
     }
@@ -285,30 +244,44 @@ public class HomeActivity extends AppActivity implements IGetUserInfoView, View.
 
     @Override
     public void onClick(View v) {
-//        if (isAuth){
         ibtn_check.setBackgroundResource(R.mipmap.ic_add_alert_black_18dp);
         Intent intent = new Intent(this, NotificationListActivity.class);
         intent.putExtra(Constant.KEY_TOKEN,token);
         startActivity(intent);
-//        }else{
-//            AlertDialog dialog = new AlertDialog.Builder(this)
-//                    .setMessage("您尚未进行个人真实资料认证，认证后方能正常使用，是否现在认证？")
-//                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            // TODO Auto-generated method stub
-//                            Intent intent = new Intent(HomeActivity.this,AuthoActivity.class);
-//                            intent.putExtra(Constant.KEY_TOKEN,token);
-//                            startActivity(intent);
-//                            dialog.dismiss();
-//                        }
-//                    }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            dialog.dismiss();
-//                        }
-//                    }).create();
-//            dialog.show();
-//        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        RongIM.getInstance().disconnect();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+//        if(!TextUtils.isEmpty(ry_token))
+//            RongIM.getInstance().connect(ry_token, new RongIMClient.ConnectCallback() {
+//                @Override
+//                public void onTokenIncorrect() {
+//                    Log.e(TAG,"onResume connect token incorrect");
+//                }
+//
+//                @Override
+//                public void onSuccess(String s) {
+//                    Log.e(TAG,"onResume "+ s +"connect success");
+//                }
+//
+//                @Override
+//                public void onError(RongIMClient.ErrorCode errorCode) {
+//                    Log.e(TAG,"onResume connect error::"+errorCode);
+//                }
+//            });
     }
 }

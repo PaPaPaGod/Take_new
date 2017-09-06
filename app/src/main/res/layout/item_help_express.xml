@@ -98,6 +98,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="13dp"
                         android:textColor="#0f0f0f"
+                        android:ellipsize="end"
+                        android:lines="1"
                         android:text="takenLocation"
                         android:id="@+id/help_express_place"/>
                 </LinearLayout>
@@ -116,6 +118,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="13dp"
+                        android:ellipsize="end"
+                        android:lines="1"
                         android:textColor="#0f0f0f"
                         android:text="decripiton"
                         android:id="@+id/help_express_description"/>

@@ -49,6 +49,8 @@ public class SetInfoFragment extends BaseFragment implements AdapterView.OnItemS
     Toolbar mToolbar;
     TextView toolBarTitle;
 
+    private static String TAG = "setting_tab";
+
     private SetUserInfoPresenter presenter;
 
     public static SetInfoFragment instance = new SetInfoFragment();
@@ -64,7 +66,7 @@ public class SetInfoFragment extends BaseFragment implements AdapterView.OnItemS
     private void setToken(Bundle bundle){
         if(bundle!=null){
             token = bundle.getString(Constant.KEY_TOKEN);
-            Log.e("set_token",token);
+            Log.e(TAG,"token::"+token);
         }
     }
 
@@ -109,11 +111,11 @@ public class SetInfoFragment extends BaseFragment implements AdapterView.OnItemS
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         if(checkedId == male.getId()){
-            Log.e("setPersonSex","男");
+            Log.e(TAG,"selection:"+"男");
             selected_sex = "男";
         }else{
             if(checkedId == female.getId()){
-                Log.e("setPersonSex","女");
+                Log.e(TAG,"selection:"+"女");
                 selected_sex = "女";
             }
         }
