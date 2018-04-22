@@ -32,6 +32,7 @@ public class GetUserInfoModel implements IGetUserInfoModel {
                 .subscribe(new HttpResultSubscriber<UserInfoData>() {
                     @Override
                     public void onSuccessWithData(UserInfoData userInfoData) {
+                        Log.e(tag,"getmyinfo success");
                         onGetInfoListener.onSuccess(userInfoData, Constant.SUCCESS_WITH_DATA);
                     }
 

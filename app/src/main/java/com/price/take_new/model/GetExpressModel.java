@@ -21,35 +21,34 @@ import java.util.List;
 
 public class GetExpressModel implements IGetExpressModel {
 
-    private static final String TAG = "delivery_test";
+    private static final String TAG = "delivery_module";
 
     @Override
-    public void getExpress(String token, String page, final OnExpressListener onExpressListener) {
+    public void getExpress(String token, int page, String filter,final OnExpressListener onExpressListener) {
         ServiceFactory.getInstance().createService(DeliveryApi.class)
-                .getDelivery(token, page)
+                .getDelivery(token, page,filter)
                 .compose(TransFormUtils.<HttpResult<List<DeliveryDatum>>>defaultSchedulers())
                 .subscribe(new HttpResultSubscriber<List<DeliveryDatum>>() {
                     @Override
                     public void onSuccessWithData(List<DeliveryDatum> deliveryData) {
-//                        Log.e(TAG,deliveryData.get(0).getName());
                         if(deliveryData.equals(null)){
                             onExpressListener.onError(new Throwable("返回数据失败，请稍候重试"),Constant.FAILED_WITH_EXCEPTION);
                             return;
                         }
                         onExpressListener.onSuccess(deliveryData, Constant.SUCCESS_WITH_DATA);
+
                     }
 
                     @Override
                     public void onSuccessWithMsg(HttpResult<List<DeliveryDatum>> httpResult) {
-                        Log.e(TAG,httpResult.getMsg());
+                        Log.e(TAG,httpResult.getData().get(0).getName());
                         String msg = "";
                         msg = httpResult.getMsg();
                         if(TextUtils.isEmpty(msg)) {
-                            onExpressListener.onError(new Throwable("返回数据失败，请稍候重试"),Constant.FAILED_WITH_EXCEPTION);
+                            onExpressListener.onError(new Throwable(msg),Constant.FAILED_WITH_EXCEPTION);
                             return;
                         }
                         onExpressListener.onMsg(msg,Constant.SUCCESS_WITH_MSG);
-
                     }
 
                     @Override

@@ -1,6 +1,4 @@
 package com.example.takeretrofit.api;
-
-
 import com.example.takeretrofit.Config;
 import com.example.takeretrofit.retrofit.httpsubscriber.httpwithoutdata.HttpResultWithoutData;
 

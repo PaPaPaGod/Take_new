@@ -103,4 +103,5 @@
     <string name="publish_sms_null_tips">填写快递短信内容有助于代拿者更轻松完成任务，是否放弃选择填写？</string>
     <string name="publish_notification_tips">为保障您的快递能如期送达，请时刻关注发布状况</string>
     <string name="click_publish_sms">点击查看短信内容</string>
+    <string name="authorisation_tips">认证系统与教育网绑定，请如实填写你的学好及教务网密码，take绝对不会向第三方泄露你的个人信息！</string>
 </resources>

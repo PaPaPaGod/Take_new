@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.takeretrofit.bean.mydeliveryorder.MyDeliveryOrderDatum;
-import com.example.takeretrofit.bean.myhelpdeliveryorder.MyHelpOrderDatum;
+import com.price.take_new.Constant;
 import com.price.take_new.R;
 
 import java.util.List;
@@ -25,24 +25,18 @@ public class PackageMyAdapter<T> extends CommonRecyclerViewAdapter  {
     public void convert(RecyclerView.ViewHolder holder, Object o) {
         CommonViewHolder myViewHolder = (CommonViewHolder) holder;
         MyDeliveryOrderDatum item = (MyDeliveryOrderDatum) o;
+//        Log.e("PackageMyAdapter status",item.getStatus());
         if(o!=null){
-            myViewHolder.setText(R.id.help_express_time,item.getTakeTime()).
-                    setText(R.id.help_express_company,item.getCompany()).
-                    setText(R.id.help_express_place,item.getAddress())
-                    .setText(R.id.help_express_description,item.getDes());
-            myViewHolder.setVisibility(R.id.help_express_name,View.GONE);
-//            Log.e("getName",item.getName());
-            //我的快递
-            Log.e("status",item.getStatus());
-            switch (Integer.parseInt(item.getStatus())){
+            myViewHolder.setText(R.id.item_personal_express_company,item.getCompany()).
+                    setText(R.id.item_personal_express_addr,item.getAddress())
+                    .setText(R.id.item_personal_express_desc,item.getDes());
+            myViewHolder.setVisibility(R.id.item_personal_express_name, View.GONE);
+            switch (item.getFrom_weixin()){
                 case 0:
-                    myViewHolder.setText(R.id.tv_express_state,"进行中");
+                    myViewHolder.setText(R.id.item_personal_express_weixin, Constant.STRING_CLIENT);
                     break;
                 case 1:
-                    myViewHolder.setText(R.id.tv_express_state,"已过期");
-                    break;
-                case 2:
-                    myViewHolder.setText(R.id.tv_express_state,"已完成");
+                    myViewHolder.setText(R.id.item_personal_express_weixin,Constant.STRING_WEIXIN);
                     break;
             }
         }else{

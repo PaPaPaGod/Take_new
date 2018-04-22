@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:meta-dataandroid="http://schemas.android.com/apk/res-auto"
-    android:versionCode="14"
+    android:versionCode="15"
     android:versionName="@string/app_version"
     package="com.price.take_new">
 
@@ -19,10 +19,10 @@
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
 
     <!-- 小米 配置开始 < -->
-    <permission
-        android:name="com.price.take_new.permission.MIPUSH_RECEIVE"
-        android:protectionLevel="signature" />
-    <uses-permission android:name="com.price.take_new.permission.MIPUSH_RECEIVE" /> <!-- 小米 配置结束 < -->
+    <!--<permission-->
+    <!--android:name="com.price.take_new.permission.MIPUSH_RECEIVE"-->
+    <!--android:protectionLevel="signature" />-->
+    <!--<uses-permission android:name="com.price.take_new.permission.MIPUSH_RECEIVE" /> &lt;!&ndash; 小米 配置结束 < &ndash;&gt;-->
 
     <application
         android:name=".App"
@@ -32,18 +32,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <receiver
-            android:exported="true"
-            android:name=".rong.MyNotificationReceiver">
-            <intent-filter>
-                <action android:name="io.rong.push.intent.MESSAGE_ARRIVED" />
-                <action android:name="io.rong.push.intent.MI_MESSAGE_ARRIVED" />
-                <action android:name="io.rong.push.intent.MESSAGE_CLICKED" />
-                <action android:name="io.rong.push.intent.MI_MESSAGE_CLICKED" />
-            </intent-filter>
-        </receiver>
+        <!--<receiver-->
+        <!--android:exported="true"-->
+        <!--android:name=".rong.MyNotificationReceiver">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="io.rong.push.intent.MESSAGE_ARRIVED" />-->
+        <!--<action android:name="io.rong.push.intent.MI_MESSAGE_ARRIVED" />-->
+        <!--<action android:name="io.rong.push.intent.MESSAGE_CLICKED" />-->
+        <!--<action android:name="io.rong.push.intent.MI_MESSAGE_CLICKED" />-->
+        <!--</intent-filter>-->
+        <!--</receiver>-->
+        <activity android:name=".MainActivity">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
-        <activity android:name=".view.activity.rong.ConversationActivity">
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity android:name=".view.activity.ConversationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -55,6 +62,22 @@
             </intent-filter>
         </activity>
 
+        <!--<activity-->
+        <!--android:name="io.rong.fast.activity.ConversationListActivity"-->
+        <!--android:screenOrientation="portrait"-->
+        <!--android:windowSoftInputMode="stateHidden|adjustResize">-->
+
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.VIEW" />-->
+
+        <!--<category android:name="android.intent.category.DEFAULT" />-->
+
+        <!--<data-->
+        <!--android:host="io.rong.fast"-->
+        <!--android:pathPrefix="/conversationlist"-->
+        <!--android:scheme="rong" />-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
 
         <activity android:name=".view.activity.SplashActivity">
             <intent-filter>
@@ -63,112 +86,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.LoginAcitivity" />
-        <activity android:name=".view.activity.SetInfoActivity" />
-        <activity android:name=".view.activity.home.HomeActivity" />
-        <activity android:name=".view.activity.home.PublishExpressActivity"
-                    android:windowSoftInputMode="stateVisible|adjustResize"/>
-        <activity android:name=".view.activity.home.ExpressDetailActivity" />
-        <activity android:name=".view.activity.home.Activity_Personal_Document" />
-        <activity android:name=".view.activity.home.AuthoActivity" />
-        <activity android:name=".view.activity.home.Feed_Back_Activity" />
-
-        <activity android:name=".view.activity.home.express.MyExpressActivity" />
-        <activity android:name=".view.activity.home.express.MyExpressDetailActivity" />
-        <activity android:name=".view.activity.home.express.ExpressHelpActivity" />
-        <activity android:name=".view.activity.home.express.ExpressHelpDetailActivity" />
-        <activity android:name=".view.activity.home.express.UpdateExpressActivity" />
+        <activity android:name=".view.activity.HomeActivity" />
+        <activity android:name=".view.activity.LoginAcitivity" >
+        </activity>
+        <!--<activity android:name=".view.activity.HomeActivity" />-->
+        <activity android:name=".view.activity.PublishActivity" />
+        <activity android:name=".view.activity.PackageDetailActivity" />
+        <activity android:name=".view.activity.PersonalMsgActivity" />
+        <activity android:name=".view.activity.MainTabActivity" />
 
         <activity
             android:name=".rong.NotificationSplashActivity"/>
-            <!--android:launchMode="singleTop"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:windowSoftInputMode="stateHidden|adjustResize">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.VIEW" />-->
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
-
-                <!--<data-->
-                    <!--android:host="com.price.take_new"-->
-                    <!--android:pathPrefix="/conversation/"-->
-                    <!--android:scheme="rong" />-->
-            <!--</intent-filter>-->
-        <!--</activity>-->
-
-        <activity android:name=".view.activity.notification.SysNotificationDetailActivity" />
-        <activity android:name=".view.activity.notification.NotificationListActivity" />
-        <activity android:name=".view.activity.notification.SMSCotentActivity" />
-
-        <!-- 小米 配置开始 < -->
-        <service android:name="com.xiaomi.push.service.XMPushService" android:enabled="true" />
-        <service android:name="com.xiaomi.mipush.sdk.PushMessageHandler" android:enabled="true" android:exported="true" />
-        <service android:name="com.xiaomi.mipush.sdk.MessageHandleService" android:enabled="true" />
-        <!--注：此service必须在2.2.5版本以后（包括2.2.5版本）加入-->
-
-        <service
-            android:name="com.xiaomi.push.service.XMJobService"
-            android:enabled="true"
-            android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-        <!--注：此service必须在3.0.1版本以后（包括3.0.1版本）加入-->
-
-        <receiver android:name="com.xiaomi.push.service.receivers.NetworkStatusReceiver" android:exported="true">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="com.xiaomi.push.service.receivers.PingReceiver" android:exported="false">
-            <intent-filter>
-                <action android:name="com.xiaomi.push.PING_TIMER" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="io.rong.push.platform.MiMessageReceiver" android:exported="true">
-            <intent-filter>
-                <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.xiaomi.mipush.MESSAGE_ARRIVED" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.xiaomi.mipush.ERROR" />
-            </intent-filter>
-        </receiver>
-        <!-- 小米 配置结束 < -->
-
-        <!--菊花 配置开始-->
-        <meta-data
-            android:name="com.huawei.hms.client.appid"
-            android:value="10880878" />
-
-        <provider
-            android:name="com.huawei.hms.update.provider.UpdateProvider"
-            android:authorities="com.price.take_new.hms.update.provider"
-            android:exported="false"
-            android:grantUriPermissions="true"></provider>
-        <!-- 第三方相关 :接收Push消息（注册、Push消息、Push连接状态）广播 -->
-        <receiver android:name="io.rong.push.platform.HWReceiver" >
-            <intent-filter>
-                <!-- 必须,用于接收token -->
-                <action android:name="com.huawei.android.push.intent.REGISTRATION" />
-                <!-- 必须，用于接收消息 -->
-                <action android:name="com.huawei.android.push.intent.RECEIVE" />
-                <!-- 可选，用于点击通知栏或通知栏上的按钮后触发onEvent回调 -->
-                <action android:name="com.huawei.android.push.intent.CLICK" />
-                <!-- 可选，查看push通道是否连接，不查看则不需要 -->
-                <action android:name="com.huawei.intent.action.PUSH_STATE" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="com.huawei.hms.support.api.push.PushEventReceiver" >
-            <intent-filter>
-
-                <!-- 接收通道发来的通知栏消息，兼容老版本Push -->
-                <action android:name="com.huawei.intent.action.PUSH" />
-            </intent-filter>
-        </receiver>
-
-        <!--菊花 配置结束-->
-
     </application>
 
 </manifest>

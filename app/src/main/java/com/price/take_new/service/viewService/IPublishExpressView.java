@@ -5,5 +5,5 @@ package com.price.take_new.service.viewService;
  */
 
 public interface IPublishExpressView {
-    void showToast(String msg,int code);
+    void showToast(String msg, int code);
 }

@@ -10,5 +10,5 @@ import com.price.take_new.service.api.OnMyPublishExpressListener;
 
 public interface IMyExpressModel {
     void getExpress(String token, String page, OnMyPublishExpressListener onMyExpressListener);
-    void getHelpExpress(String token,String page,OnMyHelpExpressListener onMyExpressListener);
+    void getHelpExpress(String token, String page, OnMyHelpExpressListener onMyExpressListener);
 }

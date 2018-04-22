@@ -43,9 +43,12 @@ public class ManagerExpressModel implements IManagerExpressModel {
 
     //修改快递
     @Override
-    public void update(String token, String order_id, String company, String des, String address, String place, String price, String take_time, final OnManagerExpressListener onManagerExpressListener) {
+    public void update(String token, String order_id, String company, String address, String place,
+                       String nickname, int weight_type, String des, int at_school, String sms_content,
+                       String money, String small_reward, final OnManagerExpressListener onManagerExpressListener) {
         ServiceFactory.getInstance().createService(UpdateMyOrderApi.class)
-                .update(token,order_id,company,des,address,take_time,place,price)
+                .update(token,order_id,company,address,place,nickname,weight_type,des,
+                        at_school,sms_content,money,small_reward,null)
                 .compose(TransFormUtils.<HttpResultWithoutData>defaultSchedulers())
                 .subscribe(new HttpResultMsgSubscriber() {
                     @Override

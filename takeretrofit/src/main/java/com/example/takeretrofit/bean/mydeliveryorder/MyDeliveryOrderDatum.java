@@ -47,6 +47,30 @@ public class MyDeliveryOrderDatum {
     @Expose
     private String sms_content;
 
+    @SerializedName("small_reward")
+    @Expose
+    private String small_reward;
+
+    @SerializedName("from_weixin")
+    @Expose
+    private int from_weixin;
+
+    public int getFrom_weixin() {
+        return from_weixin;
+    }
+
+    public void setFrom_weixin(int from_weixin) {
+        this.from_weixin = from_weixin;
+    }
+
+    public String getSmall_reward() {
+        return small_reward;
+    }
+
+    public void setSmall_reward(String small_reward) {
+        this.small_reward = small_reward;
+    }
+
     public String getSms_content() {
         return sms_content;
     }

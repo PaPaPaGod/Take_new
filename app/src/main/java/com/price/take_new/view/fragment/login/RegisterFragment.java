@@ -1,57 +1,36 @@
 package com.price.take_new.view.fragment.login;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.AppCompatSpinner;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
-import com.example.takeretrofit.utils.MD5Tool;
 import com.price.take_new.BaseFragment;
-import com.price.take_new.Constant;
 import com.price.take_new.R;
-import com.price.take_new.presenter.RegisterPresenter;
-import com.price.take_new.service.viewService.IRegisterView;
+
 
 /**
- * Created by price on 2/18/2017.
+ * Created by intel on 2/3/2018.
  */
 
-public class RegisterFragment extends BaseFragment implements IRegisterView, View.OnClickListener {
-    private EditText et_phone;
-    private EditText et_password;
-    private EditText et_confirm_password;
-    private Button btn_commit;
+public class RegisterFragment extends BaseFragment {
 
-    private RegisterPresenter presenter;
+    private RadioGroup mRadioGroup;
+    private RadioButton mRBMale;
+    private RadioButton mRBFemale;
 
-    ProgressDialog registerDialog;
+    private EditText et_name;
+    private EditText et_tb_name;
+    private EditText et_major;
+    private EditText et_dorm;
+
+    private AppCompatSpinner mSpinner;
 
     private static RegisterFragment instance = new RegisterFragment();
 
-    @Override
-    protected void initView(View view, Bundle savedInstanceState) {
-        et_phone = (EditText) view.findViewById(R.id.et_register_phone);
-        et_password = (EditText) view.findViewById(R.id.et_register_password);
-        et_confirm_password = (EditText) view.findViewById(R.id.et_register_confirm_password);
-        btn_commit = (Button) view.findViewById(R.id.btn_finish_register);
-        btn_commit.setOnClickListener(this);
-        presenter = new RegisterPresenter(this);
-        registerDialog = ProgressDialog.show(getActivity(),
-                getResources().getString(R.string.RegisterProgressDialogTitle),
-                getResources().getString(R.string.RegisterProgressDialogContent));
-        registerDialog.dismiss();
-        registerDialog.setCancelable(true);
-    }
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_register;
-    }
-
-    public static RegisterFragment newInstance() {
+    public static RegisterFragment newInstance(){
         if(instance == null){
             instance = new RegisterFragment();
         }
@@ -59,34 +38,17 @@ public class RegisterFragment extends BaseFragment implements IRegisterView, Vie
     }
 
     @Override
-    public void showToast(String msg,int code) {
-        Toast.makeText(getActivity(),msg,Toast.LENGTH_SHORT).show();
-        if(code == Constant.SUCCESS_BACK){
-            removeFragment();
-        }
+    protected void initView(View view, Bundle savedInstanceState) {
+        et_name = (EditText) view.findViewById(R.id.et_info_name);
+        et_tb_name = (EditText) view.findViewById(R.id.et_info_tbname);
+        et_major = (EditText) view.findViewById(R.id.et_info_major);
+        et_dorm = (EditText) view.findViewById(R.id.et_info_dorm);
     }
 
-    @Override
-    public void showProgressDialog() {
-        registerDialog.show();
-    }
 
     @Override
-    public void hideLoading() {
-        registerDialog.dismiss();
+    protected int getLayoutId() {
+        return R.layout.fragment_register;
     }
 
-    @Override
-    public void onClick(View v) {
-        String phone = et_phone.getText().toString();
-        String password = et_password.getText().toString();
-        String confirm_password = et_confirm_password.getText().toString();
-        Log.e("text",phone+"  "+password+"  "+confirm_password);
-        boolean isTrue = presenter.check(phone,password,confirm_password);
-        if(!isTrue){
-            return;
-        }
-        registerDialog.show();
-        presenter.register(phone, password);
-    }
 }

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@color/colorTabBackground"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_marginTop="9dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/retangle_background"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    style="@style/PagerMsgTag"
+                    android:text="姓名：" />
+
+                <TextView
+                    android:text="unkown"
+                    android:id="@+id/tv_pager_mymsg_name"
+                    style="@style/PagerMsgContent"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="9dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/retangle_background"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    style="@style/PagerMsgTag"
+                    android:text="学校：" />
+
+                <TextView
+                    android:text="unkown"
+                    android:id="@+id/tv_pager_mymsg_school"
+                    style="@style/PagerMsgContent"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="9dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/retangle_background"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    style="@style/PagerMsgTag"
+                    android:text="电话：" />
+
+                <TextView
+                    android:text="unkown"
+                    android:id="@+id/tv_pager_mymsg_phone"
+                    style="@style/PagerMsgContent"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="9dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/retangle_background"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    style="@style/PagerMsgTag"
+                    android:text="专业：" />
+
+                <TextView
+                    android:text="unkown"
+                    android:id="@+id/tv_pager_mymsg_major"
+                    style="@style/PagerMsgContent"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="9dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/retangle_background"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:id="@+id/tv_pager_mymsg_auth_tag"
+                    style="@style/PagerMsgTag"
+                    android:text="学生认证：" />
+
+                <TextView
+                    android:id="@+id/tv_pager_mymsg_auth"
+                    style="@style/PagerMsgContent"
+                    android:layout_alignBaseline="@+id/tv_pager_mymsg_auth_tag"
+                    android:layout_alignBottom="@+id/tv_pager_mymsg_auth_tag"
+                    android:layout_toEndOf="@+id/tv_pager_mymsg_auth_tag"
+                    android:layout_toRightOf="@+id/tv_pager_mymsg_auth_tag"
+                    android:text="unkown" />
+
+                <ImageView
+                    android:layout_marginRight="19dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/image_auth"
+                    android:id="@+id/iv_pager_mymsg_auth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="9dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/retangle_background"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:id="@+id/tv_pager_mymsg_addr_tag"
+                    android:text="常用收货地址："
+                    style="@style/PagerMsgTag" />
+
+                <TextView
+                    android:id="@+id/tv_pager_mymsg_addr"
+                    style="@style/PagerMsgContent"
+                    android:layout_toEndOf="@+id/tv_pager_mymsg_addr_tag"
+                    android:layout_toRightOf="@+id/tv_pager_mymsg_addr_tag"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:text="unkown" />
+
+                <ImageView
+                    android:layout_marginRight="19dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/image_pager_msg_edit"
+                    android:id="@+id/iv_pager_mymsg_addr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

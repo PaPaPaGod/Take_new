@@ -25,7 +25,6 @@ public class SetUserInfoPresenter {
     public SetUserInfoPresenter(ISetUserInfoView view) {
         this.view = view;
         model = new SetUserInfoModel();
-//        presenter = new GetUserInfoPresenter(null);
     }
 
     public void set(final String token, final String name, final String sex, String school_id, final String major, final Context context){
@@ -52,7 +51,6 @@ public class SetUserInfoPresenter {
                     result = msg;
                 }
                 view.showToast(result,code);
-//                presenter.cacheInfo();
             }
 
             @Override

@@ -7,5 +7,5 @@ import com.price.take_new.service.api.OnExpressListener;
  */
 
 public interface IGetExpressModel {
-    void getExpress(String token, String page, OnExpressListener onExpressListener);
+    void getExpress(String token, int page, String filter, OnExpressListener onExpressListener);
 }

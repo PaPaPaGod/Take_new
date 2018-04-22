@@ -18,24 +18,36 @@ import java.util.List;
 
 public class GetDelivery {
     //获取快递列表
-    private static final String TAG = "delivery_test";
-    public void getDelivery(String token,String page){
+    private static final String TAG = "delivery";
+    public void getDelivery(String token,int page,String filter){
         ServiceFactory.getInstance().createService(DeliveryApi.class)
-                .getDelivery(token, page)
+                .getDelivery(token, page,filter)
                 .compose(TransFormUtils.<HttpResult<List<DeliveryDatum>>>defaultSchedulers())
                 .subscribe(new HttpResultSubscriber<List<DeliveryDatum>>() {
                     @Override
                     public void onSuccessWithData(List<DeliveryDatum> deliveryData) {
-                        Log.e(TAG,deliveryData.get(0).getName());
+                        Log.e(TAG,"onSuccessWithData");
+                        if(deliveryData==null){
+                            Log.e(TAG,"delivery is null");
+                        }
+                        Log.e(TAG,deliveryData.size()+"size");
                     }
 
                     @Override
                     public void onSuccessWithMsg(HttpResult<List<DeliveryDatum>> httpResult) {
-                        Log.e(TAG,httpResult.getMsg());
+                        Log.e(TAG,"onSuccessWithMsg");
+                        if(httpResult==null){
+                            Log.e(TAG,"httpResult is null");
+                        }
+                        Log.e(TAG,httpResult.getData().get(0).getId());
                     }
 
                     @Override
                     public void _onError(Throwable throwable) {
+                        Log.e(TAG,"_onError");
+                        if(throwable==null){
+                            Log.e(TAG,"throwable is null");
+                        }
                         Log.e(TAG,throwable.getMessage());
                     }
                 });

@@ -5,6 +5,6 @@ package com.price.take_new.service.api;
  */
 
 public interface OnRegisterListener {
-    public abstract void onSuccess(String msg,int hint);
-    public abstract void onError(Throwable throwable,int error);
+    public abstract void onSuccess(String msg, int hint);
+    public abstract void onError(Throwable throwable, int error);
 }

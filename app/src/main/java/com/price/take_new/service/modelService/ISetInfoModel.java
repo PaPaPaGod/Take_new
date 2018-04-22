@@ -8,5 +8,5 @@ import com.price.take_new.service.api.OnSetUserInfoListener;
  */
 
 public interface ISetInfoModel {
-    void set(String token,String name, String sex, String school_id, String major,OnSetUserInfoListener onSetUserInfoListener);
+    void set(String token, String name, String sex, String school_id, String major, OnSetUserInfoListener onSetUserInfoListener);
 }

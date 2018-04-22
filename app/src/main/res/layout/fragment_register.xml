@@ -1,84 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorAccent"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#F4F1EA"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <include
-        layout="@layout/toolbar"/>
-
-    <EditText
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="60dp"
-        android:hint="@string/phoneNumber"
-        android:textColorHint="#999999"
-        android:id="@+id/et_register_phone"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--&gt;-->
+                <TextView
+                    android:textColor="#FFFFFF"
+                    android:textSize="25dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:text="填写个人信息"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
-        <!--<EditText-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="10dp"-->
-            <!--android:layout_marginRight="10dp"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:hint="@string/identifying_code"-->
-            <!--android:textColorHint="#999999"-->
-            <!--android:id="@+id/et_register_verified_code"-->
-            <!--android:layout_gravity="center_horizontal" />-->
+            <!--名字行-->
+            <LinearLayout
+                android:id="@+id/info_name"
+                style="@style/InfoInputLine"
+                android:layout_marginTop="26dp">
+                <TextView
+                    style="@style/InfoInputLineText"
+                    android:text="姓名：" />
 
-        <!--<Button-->
-            <!--style="?android:attr/buttonStyleSmall"-->
-            <!--android:layout_width="55dp"-->
-            <!--android:layout_height="20dp"-->
-            <!--android:layout_marginTop="17dp"-->
-            <!--android:layout_marginRight="10dp"-->
-            <!--android:text="@string/send_identifying_code"-->
-            <!--android:textSize="10dp"-->
-            <!--android:background="@drawable/button_shape"-->
-            <!--android:id="@+id/btn_register_getcode"-->
-            <!--android:layout_alignParentTop="true"-->
-            <!--android:layout_alignEnd="@+id/et_register_verified_code"-->
-            <!--android:layout_alignRight="@+id/et_register_verified_code" />-->
-    <!--</RelativeLayout>-->
+                <EditText
+                    android:background="@null"
+                    android:id="@+id/et_info_name"
+                    android:layout_width="260dp"
+                    android:layout_height="40dp" />
+            </LinearLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:hint="@string/enter_new_password"
-        android:textColorHint="#999999"
-        android:id="@+id/et_register_password"
-        android:layout_gravity="center_horizontal" />
+            <!--性别行-->
+            <LinearLayout
+                android:gravity="center_vertical"
+                style="@style/InfoInputLine">
+                <TextView
+                    android:text="性别："
+                    style="@style/InfoInputLineText" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:hint="@string/confirm_new_password"
-        android:textColorHint="#999999"
-        android:id="@+id/et_register_confirm_password"
-        android:layout_gravity="center_horizontal" />
+                <RadioGroup
+                    android:id="@+id/info_rg"
+                    android:layout_width="260dp"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-    <Button
-        android:text="@string/finish"
-        android:background="#fff841"
-        android:textSize="18dp"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_finish_register" />
+                    <RadioButton
+                        android:id="@+id/info_rb_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="32dp"
+                        android:background="@drawable/register_male"
+                        android:button="@null"
+                        android:checked="true" />
 
-</LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:text="男生" />
+
+                    <RadioButton
+                        android:id="@+id/info_rb_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:background="@drawable/register_female"
+                        android:button="@null" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:text="女生" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="221dp"
+                    android:textSize="11dp"
+                    android:textColor="#FFFFFF"
+                    android:text="*性别一经选定，不能修改"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!--学校行-->
+            <LinearLayout
+                android:gravity="center_vertical"
+                style="@style/InfoInputLine">
+                <TextView
+                    android:text="选择学校："
+                    style="@style/InfoInputLineText" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:entries="@array/school_array"
+                    android:id="@+id/info_spinner_school"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.AppCompatSpinner>
+            </LinearLayout>
+
+            <!--专业-->
+            <LinearLayout
+                style="@style/InfoInputLine">
+                <TextView
+                    style="@style/InfoInputLineText"
+                    android:text="专业：" />
+
+                <EditText
+                    android:background="@null"
+                    android:id="@+id/et_info_major"
+                    android:layout_width="260dp"
+                    android:layout_height="40dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="24dp"
+                    android:textSize="16dp"
+                    android:textColor="#D06800"
+                    android:text="常用收货信息："
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!--淘宝昵称-->
+            <LinearLayout
+                style="@style/InfoInputLine">
+                <TextView
+                    style="@style/InfoInputLineText"
+                    android:text="淘宝昵称：" />
+
+                <EditText
+                    android:background="@null"
+                    android:id="@+id/et_info_tbname"
+                    android:layout_width="260dp"
+                    android:layout_height="40dp" />
+            </LinearLayout>
+
+            <!--宿舍号-->
+            <LinearLayout
+                style="@style/InfoInputLine">
+                <TextView
+                    style="@style/InfoInputLineText"
+                    android:text="宿舍号：" />
+
+                <EditText
+                    android:background="@null"
+                    android:id="@+id/et_info_dorm"
+                    android:layout_width="260dp"
+                    android:layout_height="40dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:textSize="20dp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/btn_register"
+                    android:id="@+id/register_btn"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

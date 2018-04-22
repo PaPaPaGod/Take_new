@@ -5,11 +5,15 @@
     android:gravity="center"
     android:layout_height="40sp">
 
+    <!--<View-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--style="@style/Line"-->
+        <!--android:layout_width="350dp" />-->
     <TextView
         android:visibility="visible"
         android:gravity="center_horizontal"
         style="@style/SmallGreyTextView"
-        android:text="@string/end"
+        android:text="到底了"
         android:id="@+id/footer_load_more"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -28,6 +32,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/loading" />
+        android:text="加载中…" />
 
 </LinearLayout>

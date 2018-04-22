@@ -25,15 +25,16 @@ public class AcceptExpressPresenter {
         dao = App.getDaoSession().getUserInfoDao();
     }
 
-    public void acceptOrder(String token, String poster_id, String express_id, final UserInfo info){
-        acceptExpressModel.getExpress(token, poster_id, express_id, info,new AcceptExpressListener() {
+    public void acceptOrder(String token, String express_id){
+        acceptExpressModel.getExpress(token, express_id, new AcceptExpressListener() {
             @Override
             public void onSuccess(String msg, int code) {
                 if("不能抢自己发布的订单".equals(msg)) {
                     acceptExpressView.showToast(msg, code);
                     return;
                 }
-                dao.insertOrReplace(info);
+                acceptExpressView.showToast(msg, code);
+//                dao.insertOrReplace(info);
                 showDialog(Constant.CODE_TALK);
             }
 

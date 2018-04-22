@@ -5,6 +5,6 @@ package com.price.take_new.service.api;
  */
 
 public interface OnManagerExpressListener {
-    void onSuccess(String msg,int code);
-    void onError(String msg,int code);
+    void onSuccess(String msg, int code);
+    void onError(String msg, int code);
 }

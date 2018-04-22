@@ -26,9 +26,12 @@ public class PublishExpressPresenter {
         this.publishExpressModel = new PublisExpressModel();
     }
 
-    public void publish(String token, String company, String des, String address, String place,
-                        String price, String take_time,String sms_content){
-        publishExpressModel.publish(token, company, des, address, place, price, take_time,sms_content,new OnPublishListener() {
+    public void publish(String token, String company, String des, String address,
+                        String place,int from_weixin, String nickname,
+                        int weight_type,int at_school,String sms_content,String reward,boolean moneyType){
+
+        publishExpressModel.publish(token, company, des, address, place, from_weixin, nickname,weight_type,
+                at_school,sms_content,moneyType,reward,new OnPublishListener() {
             @Override
             public void onSuccess(String msg,int code) {
                 Log.e("publish",msg);

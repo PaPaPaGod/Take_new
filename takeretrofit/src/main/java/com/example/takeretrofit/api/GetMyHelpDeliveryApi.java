@@ -22,5 +22,5 @@ public interface GetMyHelpDeliveryApi {
         @FormUrlEncoded
         @POST("myGetOrder")
         Observable<HttpResult<List<MyHelpOrderDatum>>> getMyHelpOrder(@Field(Config.KEY_TOKEN) String token,
-                                                                          @Field(Config.KEY_PAGE) String page);
+                                                                      @Field(Config.KEY_PAGE) String page);
 }

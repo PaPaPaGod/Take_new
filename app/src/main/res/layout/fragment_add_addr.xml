@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:orientation="vertical"
+    android:background="@color/colorTabBackground"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/toolbar" />
+
+        <LinearLayout
+            android:background="@drawable/setting_background"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="收货人"
+                    style="@style/SettingBtn" />
+
+                <EditText
+                    android:id="@+id/et_add_addr_receiver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="sdfa" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                style="@style/Line" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="联系电话"
+                    style="@style/SettingBtn" />
+
+                <EditText
+                    android:id="@+id/et_add_addr_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="sdfa" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                style="@style/Line" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/btn_add_addr_school"
+                    android:text="所在学校"
+                    style="@style/SettingBtn" />
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/add_addr_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.AppCompatSpinner>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                style="@style/Line" />
+
+            <View
+                android:layout_width="match_parent"
+                style="@style/Line" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="详细地址"
+                    style="@style/SettingBtn" />
+
+                <EditText
+                    android:layout_marginLeft="23dp"
+                    android:id="@+id/et_add_addr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请填写详细地址，不少于5个字" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="12dp"
+            android:background="@drawable/setting_background"
+            android:layout_width="match_parent"
+            android:layout_height="34dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="设为默认"
+                style="@style/SettingBtn" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/switch_add_addr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -2,10 +2,10 @@ package com.price.take_new.utils.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 
 import com.price.take_new.R;
 import com.price.take_new.utils.listener.LoadMoreListener;
@@ -20,7 +20,7 @@ import java.util.List;
 public abstract class CommonRecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int TYPE_ITEM = 0;
-    private static final int TYPE_FOOTER = 1;
+    protected static final int TYPE_FOOTER = 1;
 
     protected Context mContext;
     protected List<T> mDatas;
@@ -31,7 +31,7 @@ public abstract class CommonRecyclerViewAdapter<T> extends RecyclerView.Adapter<
     protected LoadMoreListener loadMoreListener;
 //    protected MutipleItemTypeListner<T> itemTypeListner;
 
-    public CommonRecyclerViewAdapter(Context mContext, List<T> mDatas,int layoutId,String token) {
+    public CommonRecyclerViewAdapter(Context mContext, List<T> mDatas, int layoutId, String token) {
         this.mContext = mContext;
         this.mDatas = mDatas;
         this.token = token;
@@ -69,7 +69,7 @@ public abstract class CommonRecyclerViewAdapter<T> extends RecyclerView.Adapter<
             return CommonViewHolder.getCommonViewHolder(mContext,
                     R.layout.item_footer, parent,token);
         } else {
-//            View view = inflater.inflate(R.layout.main_express_item, parent, false);
+//            View view = inflater.inflate(R.layout.item_main_express, parent, false);
             return CommonViewHolder.getCommonViewHolder(mContext,
                     layoutId,parent,token);
         }

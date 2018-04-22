@@ -18,9 +18,11 @@ public class ManagerExpressPresenter {
         updateExpressModel = new ManagerExpressModel();
     }
 
-    public void update(String token, String order_id, String company, String des,
-                       String address, String place, String price, String take_time){
-        updateExpressModel.update(token, order_id, company, des, address, place, price, take_time, new OnManagerExpressListener() {
+    public void update(String token, String company, String des, String address,String order_id,
+                       String place, String nickname,
+                       int weight_type,int at_school,String sms_content,String price,String small_reward){
+        updateExpressModel.update(token, order_id, company, address, place,nickname,weight_type,des,at_school,
+                sms_content,price, small_reward, new OnManagerExpressListener() {
             @Override
             public void onSuccess(String msg, int code) {
                 updateExpressView.showToast(msg, code);

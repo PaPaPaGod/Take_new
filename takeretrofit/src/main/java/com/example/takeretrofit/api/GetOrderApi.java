@@ -20,6 +20,5 @@ public interface GetOrderApi {
     @FormUrlEncoded
     @POST("getOrder")
     Observable<HttpResultWithoutData> getOrder(@Field(Config.KEY_TOKEN) String token,
-                                               @Field(Config.KEY_POSTER_ID) String poster_id,
                                                @Field(Config.KEY_EXPRESS_ID) String express_id);
 }

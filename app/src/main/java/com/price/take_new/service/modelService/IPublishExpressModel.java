@@ -8,5 +8,7 @@ import com.price.take_new.service.api.OnPublishListener;
 
 public interface IPublishExpressModel {
     void publish(String token, String company, String des, String address,
-                 String place, String price, String take_time, String sms_content,OnPublishListener onPublishListener);
+                 String place, int from_weixin, String nickname,
+                 int weight_type, int at_school, String sms_content, boolean moneyType,
+                 String reward, OnPublishListener onPublishListener);
 }

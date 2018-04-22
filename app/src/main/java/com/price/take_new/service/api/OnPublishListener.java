@@ -5,6 +5,6 @@ package com.price.take_new.service.api;
  */
 
 public interface OnPublishListener {
-    void onSuccess(String msg,int code);
-    void onError(Throwable throwable,int code);
+    void onSuccess(String msg, int code);
+    void onError(Throwable throwable, int code);
 }

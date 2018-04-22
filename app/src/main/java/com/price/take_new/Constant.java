@@ -43,7 +43,7 @@ public class Constant {
     public static final String KEY_ORDER_ID = "order_id";
     public static final String KEY_POSTER_ID = "poster_id";
     public static final String KEY_ID = "id";
-    public static final String USER_ID = "user_id";
+    public static final String KEY_USER_ID = "user_id";
     public static final String EXPRESS_ID = "express_id";
     public static final String KEY_OTHER_ID = "other_id";
     public static final String KEY_STATUS = "status";
@@ -59,6 +59,19 @@ public class Constant {
     public static final String KEY_ACCEPTER_NAME = "accepter_name";
     public static final String CREATED_TIME = "created";
     public static final String KEY_SMS = "sms_content";
+    public static final String KEY_HAVE_DATA = "have_data";
+    public static final String KEY_REMARKS = "remarks";
+    public static final String KEY_AUTHORISE_STATUS = "authorise_status";
+    public static final String AT_SCHOOL = "at_school";
+    public static final String TB_NAME = "tb_name";
+    public static final String KEY_SMALL_REWARD = "small_reward";
+    public static final String GETDELIVERY_DEFAULT ="all" ;
+    public static final String GETDELIVERY_FRIEND ="friend" ;
+    public static final String KEY_BUNDLE_DATA = "bundle_data";
+
+
+    public static final String STRING_CLIENT = "来自于\n手机客户端";
+    public static final String STRING_WEIXIN = "来自于\n微信小程序";
 
 
 
@@ -74,4 +87,26 @@ public class Constant {
     public static final int SYSTEM_USER_ID = 888;
     public static final String SYSTEM_TOKEN = "6vKW3OD/r/XMN2Is6MbL8+5vOiZmbDiQ6LOSA6Y+nK4zzu0DVMvyCUM3npSsMPzOyBLB5nehLV0H+FsjNRNrIQ==";
     public static int RESULT_OK_FOR_PUBLISH = 22;
+
+    public static final String FRAGMENT_NAME = "fragment_name";
+    public static final int FEEDBACK = 100; //反馈页面代号
+    public static final int AUTHORIZATION = 110;    //认证页面代号
+    public static final int MAIN_PACKAGE_DETAIL = 120; //主页面快递详情页面代号
+    public static final int MAIN_PACKAGE_PUBLISH = 130; //主页面发布快递页面代号
+    public static final int EDIT_TRADE = 140;   //个人常用地址设置页面代号
+    public static final int SETTING = 150;    //设置页面
+    public static final int EDIT_INFO = 160;  //个人信息修改页面
+    public static final int MAIN_NOTIFICATION = 170;    //通知列表
+    public static final int MY_PACKAGE_DETAIL = 180;    //个人快递详情页
+    public static final int HELP_PACKAGE_DETAIL = 190;    //代拿快递详情页
+
+
+
+
+
+    public static final int STATUS_NOT = -1; //未认证
+    public static final int STATUS_ONGOING = 0; //认证中
+    public static final int STATUS_FINISH = 1; //已认证
+
+
 }

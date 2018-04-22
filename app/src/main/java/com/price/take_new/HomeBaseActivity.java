@@ -64,7 +64,7 @@ public abstract class HomeBaseActivity extends AppCompatActivity {
                 finish();
             }
         });
-        toolBarTitle = (TextView) findViewById(R.id.toolbar_title);
+//        toolBarTitle = (TextView) findViewById(R.id.toolbar);
         toolBarTitle.setText(title);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }

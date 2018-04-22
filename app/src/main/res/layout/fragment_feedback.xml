@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="@color/colorTabBackground"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/feedback_toolbar"
+        android:layout_alignParentTop="true"
+        layout="@layout/toolbar"
+        android:layout_height="50dp"
+        android:layout_width="match_parent" />
+
+    <EditText
+        android:layout_below="@+id/toolbar"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:gravity="start"
+        android:hint="这一刻的想法..."
+        android:layout_marginTop="12dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/retangle_background"
+        android:id="@+id/et_feedback"
+        android:layout_width="340dp"
+        android:layout_height="200dp" />
+    
+    <Button
+        android:layout_below="@+id/et_feedback"
+        android:layout_marginTop="22dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/btn_feedback"
+        android:id="@+id/btn_feedback"
+        android:layout_width="316dp"
+        android:layout_height="43dp" />
+</RelativeLayout>

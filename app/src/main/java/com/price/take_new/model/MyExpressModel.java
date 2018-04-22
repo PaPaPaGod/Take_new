@@ -35,11 +35,7 @@ public class MyExpressModel implements IMyExpressModel {
                 .subscribe(new HttpResultSubscriber<List<MyDeliveryOrderDatum>>() {
                     @Override
                     public void onSuccessWithData(List<MyDeliveryOrderDatum> myDeliveryOrderData) {
-//                        if(myDeliveryOrderData.get(0).getSms_content().equals("")){
-//                            Log.e("sms_content","is null");
-//                        }else{
-//                            Log.e("sms_content","is not null");
-//                        }
+                        Log.e(tag,myDeliveryOrderData.size()+" myDeliveryOrderData");
                         onMyExpressListener.onMySuccess(myDeliveryOrderData,Constant.SUCCESS_WITH_DATA);
                     }
 
@@ -56,6 +52,8 @@ public class MyExpressModel implements IMyExpressModel {
                     }
                 });
     }
+
+
 
     //代拿快递
     @Override

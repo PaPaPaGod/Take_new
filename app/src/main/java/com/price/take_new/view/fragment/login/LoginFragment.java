@@ -11,36 +11,35 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.takeretrofit.bean.userinfo.UserInfoData;
-import com.example.takeretrofit.utils.MD5Tool;
 import com.example.takeretrofit.utils.ManagerData;
 import com.price.take_new.BaseFragment;
 import com.price.take_new.Constant;
 import com.price.take_new.R;
-import com.price.take_new.bean.UserInfo;
 import com.price.take_new.presenter.GetUserInfoPresenter;
 import com.price.take_new.presenter.LoginPresenter;
-import com.price.take_new.service.viewService.IGetUserInfoView;
+import com.price.take_new.rong.Rong;
 import com.price.take_new.service.viewService.ILoginView;
-import com.price.take_new.view.activity.SetInfoActivity;
-import com.price.take_new.view.activity.home.HomeActivity;
+import com.price.take_new.view.activity.HomeActivity;
+import com.price.take_new.view.activity.MainTabActivity;
+
+import io.rong.imkit.RongIM;
 
 
 /**
  * Created by price on 2/15/2017.
  */
 
-public class LoginFragment extends BaseFragment implements View.OnClickListener, ILoginView {
+public class LoginFragment extends BaseFragment implements ILoginView {
+    private static final String TAG = "LoginFragment";
     private Button btn_login;
     private EditText et_phone,et_password;
     private TextView tv_register,tv_forget_password;
     private static LoginFragment instance = new LoginFragment();
-    ProgressDialog loginProgressDialog;
+    private ProgressDialog loginProgressDialog;
 
-    private static final String LOGINFRAGMENT = "loginFragment";
-
+    private GetUserInfoPresenter userInfoPresenter;
     private LoginPresenter loginPresenter;
-//    private GetUserInfoPresenter infoPresenter;
+
 
     public static LoginFragment newInstance() {
         if(instance == null){
@@ -51,15 +50,17 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-//        infoPresenter = new GetUserInfoPresenter(this);
         loginPresenter = new LoginPresenter(this);
-        btn_login = (Button) view.findViewById(R.id.login);
-        et_phone = (EditText) view.findViewById(R.id.et_userNameId);
-        et_password = (EditText) view.findViewById(R.id.et_login_password);
-        tv_register = (TextView) view.findViewById(R.id.tv_login_register);
-        tv_forget_password = (TextView) view.findViewById(R.id.tv_forget_password);
-        btn_login.setOnClickListener(this);
-        tv_register.setOnClickListener(this);
+        et_phone = (EditText) view.findViewById(R.id.et_login);
+        et_password = (EditText) view.findViewById(R.id.et_password);
+        btn_login = (Button) view.findViewById(R.id.btn_login);
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                login();
+            }
+        });
+
         loginProgressDialog = ProgressDialog.show(getActivity(),
                 getResources().getString(R.string.LoginProgressDialogTitle),
                 getResources().getString(R.string.LoginProgressDialogContent));
@@ -72,59 +73,20 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
         return R.layout.fragment_login;
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.login:
-                login();
-                break;
-
-            case R.id.tv_login_register:
-                addFragment(RegisterFragment.newInstance());
-                break;
-
-            case R.id.tv_forget_password:
-                addFragment(ResetPasswordFragment.newInstance());
-                break;
-        }
-    }
-
     private void login() {
-//        Bundle data = new Bundle();
         String phone_num;
         String password;
         phone_num = et_phone.getText().toString();
         password = et_password.getText().toString();
         if(phone_num.isEmpty()){
-            Log.e(LOGINFRAGMENT,"no phone");
-            Toast.makeText(getActivity(),"请输入电话号码",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"请输入电话号码", Toast.LENGTH_SHORT).show();
             return;
         }else if (password.isEmpty()){
-            Toast.makeText(getActivity(),"请输入密码",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"请输入密码", Toast.LENGTH_SHORT).show();
             return;
         }
         loginProgressDialog.show();
         loginPresenter.login(phone_num, password,getActivity());
-    }
-
-    @Override
-    public String getPhoneNum() {
-        return et_phone.getText().toString();
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public void setPhoneNum(String phoneNum) {
-
-    }
-
-    @Override
-    public void setPassword(String password) {
-
     }
 
     @Override
@@ -135,14 +97,15 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
     @Override
     public void goToHome(String token, String ry_token) {
         Intent intent = new Intent(getActivity(),HomeActivity.class);
+//        intent.putExtra(Constant.FRAGMENT_NAME,Constant.SETTING);
         Bundle data = new Bundle();
-        data.putString("token",token);
-        Log.e("isAuth", ManagerData.getAuth(getActivity())+"");
+        data.putString(Constant.KEY_TOKEN,token);
+        Log.e(TAG, "LoginFragment getAuth:"+ManagerData.getAuth(getActivity()));
         if(TextUtils.isEmpty(ry_token)){
             goToSetInfo(token);
         }else {
-            data.putString("ry_token", ry_token);
-            Log.e(LOGINFRAGMENT, "token:: "+token+"/n"+"  ry_token:: "+ry_token);
+            data.putString(Constant.KEY_RONG_TOKEN, ry_token);
+            Log.e(TAG, "LOGINFRAGMENT::token:: "+token+"/n"+"  ry_token:: "+ry_token);
             intent.putExtras(data);
             startActivity(intent);
             removeFragment();
@@ -162,9 +125,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
 
     @Override
     public void goToSetInfo(String token) {
-        Intent intent = new Intent(getActivity(), SetInfoActivity.class);
-        intent.putExtra(Constant.KEY_TOKEN,token);
-        startActivityForResult(intent,0);
+        Bundle bundle = new Bundle();
+        bundle.putString(Constant.KEY_TOKEN,token);
+        SetUserMsgFragment.newInstance().setArguments(bundle);
+        addFragment(SetUserMsgFragment.newInstance());
     }
 
     @Override

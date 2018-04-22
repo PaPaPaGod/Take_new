@@ -21,9 +21,9 @@ public class AcceptExpressModel implements IAcceptExpressModel {
     private String tag = "getOrder_test";
 
     @Override
-    public void getExpress(String token, String poster_id, String express_id, UserInfo info,final AcceptExpressListener acceptExpressListener) {
+    public void getExpress(String token, String express_id, final AcceptExpressListener acceptExpressListener) {
         ServiceFactory.getInstance().createService(GetOrderApi.class)
-                .getOrder(token,poster_id,express_id)
+                .getOrder(token,express_id)
                 .compose(TransFormUtils.<HttpResultWithoutData>defaultSchedulers())
                 .subscribe(new HttpResultMsgSubscriber() {
                     @Override

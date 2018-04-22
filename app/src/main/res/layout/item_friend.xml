@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="61dp">
+
+    <ImageView
+        android:src="@drawable/portrait_male"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/iv_item_friend_portrait"
+        android:layout_width="49dp"
+        android:layout_height="49dp" />
+
+    <RelativeLayout
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="12dp"
+        android:layout_toEndOf="@+id/iv_item_friend_portrait"
+        android:id="@+id/rl_item_info"
+        android:layout_width="230dp"
+        android:layout_height="61dp"
+        android:layout_toRightOf="@+id/iv_item_friend_portrait">
+        <TextView
+            android:text="name"
+            android:id="@+id/tv_item_friend_name"
+            android:layout_width="50dp"
+            android:layout_height="16dp" />
+
+        <TextView
+            android:id="@+id/tv_item_friend_help"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/tv_item_friend_name"
+            android:textColor="#B6B5B5"
+            android:textSize="10dp"
+            android:text="帮助他人次数："
+            android:layout_width="70dp"
+            android:layout_height="16dp" />
+
+        <TextView
+            android:id="@+id/tv_item_friend_count"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_alignBaseline="@+id/tv_item_friend_help"
+            android:layout_alignBottom="@+id/tv_item_friend_help"
+            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
+            android:layout_toEndOf="@+id/tv_item_friend_help"
+            android:layout_toRightOf="@+id/tv_item_friend_help"
+            android:text="16次"
+            android:textColor="#FF7F00"
+            android:textSize="10dp" />
+    </RelativeLayout>
+
+    <ImageButton
+        android:layout_centerInParent="true"
+        android:layout_toEndOf="@+id/rl_item_info"
+        android:src="@drawable/item_friend_sendmsg"
+        android:id="@+id/btn_item_friend_sendmsg"
+        android:layout_width="65dp"
+        android:layout_height="22dp"
+        android:layout_toRightOf="@+id/rl_item_info" />
+
+</RelativeLayout>

@@ -8,5 +8,5 @@ import com.price.take_new.bean.UserInfo;
 
 public interface ISetUserInfoView {
     void bindRy_token(String ry_token);
-    void showToast(String msg,int code);
+    void showToast(String msg, int code);
 }

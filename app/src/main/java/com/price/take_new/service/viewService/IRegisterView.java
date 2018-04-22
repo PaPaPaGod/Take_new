@@ -5,7 +5,7 @@ package com.price.take_new.service.viewService;
  */
 
 public interface IRegisterView {
-    void showToast(String msg,int code);
+    void showToast(String msg, int code);
     void showProgressDialog();
     void hideLoading();
 }

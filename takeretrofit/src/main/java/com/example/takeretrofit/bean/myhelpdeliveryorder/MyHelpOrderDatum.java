@@ -40,18 +40,68 @@ public class MyHelpOrderDatum {
     @Expose
     private String name;
 
+    @SerializedName("at_school")
+    @Expose
+    private int at_school;
+
+    @SerializedName("weight_type")
+    @Expose
+    private String weight_type;
+
+    @SerializedName("small_reward")
+    @Expose
+    private String small_reward;
+
+    @SerializedName("nickname")
+    @Expose
+    private String nickname;
+
     @SerializedName("sms_content")
     @Expose
     private String sms_content;
 
-    private String sex;
-
-    public String getSex() {
-        return sex;
+    public int getFrom_weixin() {
+        return from_weixin;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setFrom_weixin(int from_weixin) {
+        this.from_weixin = from_weixin;
+    }
+
+    @SerializedName("from_weixin")
+    @Expose
+    private int from_weixin;
+
+    public int getAt_school() {
+        return at_school;
+    }
+
+    public void setAt_school(int at_school) {
+        this.at_school = at_school;
+    }
+
+    public String getWeight_type() {
+        return weight_type;
+    }
+
+    public void setWeight_type(String weight_type) {
+        this.weight_type = weight_type;
+    }
+
+    public String getSmall_reward() {
+        return small_reward;
+    }
+
+    public void setSmall_reward(String small_reward) {
+        this.small_reward = small_reward;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getSms_content() {

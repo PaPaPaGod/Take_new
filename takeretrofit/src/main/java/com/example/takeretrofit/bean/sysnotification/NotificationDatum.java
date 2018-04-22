@@ -8,6 +8,18 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class NotificationDatum {
+    public int getStyle() {
+        return style;
+    }
+
+    public void setStyle(int style) {
+        this.style = style;
+    }
+
+    @SerializedName("style")
+    @Expose
+    private int style;
+
     @SerializedName("id")
     @Expose
     private String id;

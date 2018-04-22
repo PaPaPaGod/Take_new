@@ -53,6 +53,42 @@ public class DeliveryDatum {
     @Expose
     private String status;
 
+    @SerializedName("is_friend")
+    @Expose
+    private boolean is_friend;
+
+    @SerializedName("from_weixin")
+    @Expose
+    private int from_weixin;
+
+    public boolean getIs_friend() {
+        return is_friend;
+    }
+
+    public void setIs_friend(boolean is_friend) {
+        this.is_friend = is_friend;
+    }
+
+    public int getFrom_weixin() {
+        return from_weixin;
+    }
+
+    public void setFrom_weixin(int from_weixin) {
+        this.from_weixin = from_weixin;
+    }
+
+    public String getSmall_reward() {
+        return small_reward;
+    }
+
+    public void setSmall_reward(String small_reward) {
+        this.small_reward = small_reward;
+    }
+
+    @SerializedName("small_reward")
+    @Expose
+    private String small_reward;
+
     public String getId() {
         return id;
     }

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_margin="10dp"
+    android:layout_gravity="center_horizontal|center_vertical"
+    android:background="@drawable/retangle_background"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="340dp"
+    android:layout_height="67dp">
+    <RelativeLayout
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="11dp"
+        android:id="@+id/rl_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_notification"
+            android:textSize="14dp"
+            android:textColor="#343434"
+            android:text="你已代拿的"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_notification_msg_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/tv_notification"
+            android:text="xxx"
+            android:textColor="#343434"
+            android:textSize="14dp"
+            android:layout_toRightOf="@+id/tv_notification" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/tv_notification_msg_name"
+            android:layout_toRightOf="@+id/tv_notification_msg_name"
+            android:text="的快递，点击查看详情"
+            android:textColor="#343434"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:layout_marginLeft="11dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/rl_friend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rl_text">
+            <TextView
+                android:id="@+id/tv_notification_add_name"
+                android:layout_centerVertical="true"
+                android:textSize="14dp"
+                android:textColor="#343434"
+                android:text="xxx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_toEndOf="@+id/tv_notification_add_name"
+                android:id="@+id/tv_notification_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="将添加你为好友"
+                android:textColor="#343434"
+                android:textSize="14dp"
+                android:layout_toRightOf="@+id/tv_notification_add_name" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginLeft="60dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/rl_text"
+            android:id="@+id/rl_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/rl_text">
+
+            <Button
+                android:id="@+id/btn_notification_accept"
+                android:layout_width="53dp"
+                android:layout_height="21dp"
+                android:background="@drawable/btn_accept" />
+
+            <Button
+                android:layout_marginLeft="12dp"
+                android:layout_toEndOf="@+id/btn_notification_accept"
+                android:id="@+id/btn_notification_refuse"
+                android:layout_width="53dp"
+                android:layout_height="21dp"
+                android:background="@drawable/btn_refuse"
+                android:layout_toRightOf="@+id/btn_notification_accept" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:text="1111"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="#A5A5A5"
+        android:textSize="11dp"
+        android:layout_margin="5dp"
+        android:id="@+id/tv_notification_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorTabBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/package_detail_toolbar"
+        layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_below="@+id/package_detail_toolbar"
+        android:background="@drawable/expresstab_background"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="9dp"
+        android:orientation="vertical"
+        android:layout_width="340dp"
+        android:layout_height="480dp">
+
+        <!--company-->
+        <LinearLayout
+            android:layout_marginTop="19dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/ExpressDetailInfo"
+                android:text="快递公司："
+                />
+            <TextView
+                android:id="@+id/package_detail_company"
+                style="@style/ExpressDetailInfoMsg" />
+        </LinearLayout>
+
+        <!--快递取件地点-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            >
+            <TextView
+                style="@style/ExpressDetailInfo"
+                android:text="快递取件地点："
+                />
+            <TextView
+                android:id="@+id/package_detail_addr"
+                style="@style/ExpressDetailInfoMsg" />
+        </LinearLayout>
+
+        <!--快递交易地点-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            >
+            <TextView
+                style="@style/ExpressDetailInfo"
+                android:text="快递交接地点："
+                />
+            <TextView
+                android:id="@+id/package_detail_trade"
+                style="@style/ExpressDetailInfoMsg" />
+        </LinearLayout>
+
+        <!--包裹描述-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            >
+            <TextView
+                style="@style/ExpressDetailInfo"
+                android:text="包裹描述："
+                />
+            <TextView
+                android:id="@+id/package_detail_desc"
+                style="@style/ExpressDetailInfoMsg" />
+        </LinearLayout>
+
+        <!--是否在校-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            >
+            <TextView
+                style="@style/ExpressDetailInfo"
+                android:text="在校状态："
+                />
+            <TextView
+                android:id="@+id/package_detail_atschool"
+                style="@style/ExpressDetailInfoMsg" />
+        </LinearLayout>
+
+        <!--奖励-->
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/package_detail_ly_reward"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            >
+            <TextView
+                style="@style/ExpressDetailInfo"
+                android:text="奖励："
+                />
+            <TextView
+                android:id="@+id/package_detail_reward"
+                style="@style/ExpressDetailInfoMsg" />
+        </LinearLayout>
+
+        <!--备注-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            >
+            <TextView
+                style="@style/ExpressDetailInfo"
+                android:text="备注："
+                />
+            <TextView
+                android:id="@+id/package_detail_remarks"
+                style="@style/ExpressDetailInfoMsg" />
+        </LinearLayout>
+
+        <Button
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="21dp"
+            android:id="@+id/package_detail_take"
+            android:background="@drawable/btn_take"
+            android:layout_width="316dp"
+            android:layout_height="43dp" />
+
+    </LinearLayout>
+</RelativeLayout>

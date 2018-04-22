@@ -1,18 +1,16 @@
 package com.price.take_new.utils.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.price.take_new.Constant;
-import com.price.take_new.utils.item.PersonalExpressItem;
+import com.price.take_new.utils.listener.FriendClickListener;
 
 
 /**
@@ -41,7 +39,7 @@ public class CommonViewHolder extends RecyclerView.ViewHolder{
     // 入口方法，完成传统Adapter里面实例化ViewHolder对象工作
     public static CommonViewHolder getCommonViewHolder(
             Context context, int layoutId,
-            ViewGroup parent,String token) {
+            ViewGroup parent, String token) {
 
         View itemView = LayoutInflater.from(context).inflate(layoutId, parent,
                 false);
@@ -73,25 +71,6 @@ public class CommonViewHolder extends RecyclerView.ViewHolder{
         return this;
     }
 
-//    public CommonViewHolder setImage(int viewId, int imgResource, boolean isOnclick, final PersonalExpressItem personalExpressItem){
-//        ImageView iv = getView(viewId);
-//        iv.setImageResource(imgResource);
-//        if(isOnclick){
-//            iv.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    //                Toast.makeText()
-//                    Log.e("ImgOnclick","isOnclick");
-//                    Intent intent = new Intent(context, PersonInfoActivity.class);
-//                    intent.putExtra(Constant.USER_ID,personalExpressItem.getUser_id())
-//                            .putExtra(Constant.KEY_TOKEN,token);
-//                    context.startActivity(intent);
-//                }
-//            });
-//        }
-//        return this;
-//    }
-
     public CommonViewHolder setVisibility(int viewId,int status){
         View view = getView(viewId);
         view.setVisibility(status);
@@ -102,6 +81,17 @@ public class CommonViewHolder extends RecyclerView.ViewHolder{
     public CommonViewHolder setImageResource(int viewId,int male) {
         ImageView iv = getView(viewId);
         iv.setImageResource(male);
+        return this;
+    }
+
+    public CommonViewHolder addOnClickListener(int viewId,final FriendClickListener listener){
+        ImageButton btn = getView(viewId);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.send();
+            }
+        });
         return this;
     }
 }

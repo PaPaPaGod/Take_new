@@ -12,5 +12,5 @@ import java.util.List;
 
 public interface ISysNotificationView {
     void showData(List<NotificationDatum> mData);
-    void showToast(String msg,int code);
+    void showToast(String msg, int code);
 }

@@ -25,7 +25,7 @@ public class GetUserInfo {
                 .subscribe(new HttpResultSubscriber<UserInfoData>() {
                     @Override
                     public void onSuccessWithData(UserInfoData userInfoData) {
-                        Log.e(tag, userInfoData.getAuth());
+//                        Log.e(tag, userInfoData.getAuth());
                     }
 
                     @Override

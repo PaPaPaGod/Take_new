@@ -1,6 +1,5 @@
 package com.example.takeretrofit.api;
 
-
 import com.example.takeretrofit.Config;
 import com.example.takeretrofit.bean.delivery.DeliveryDatum;
 import com.example.takeretrofit.retrofit.httpsubscriber.httpwithdata.HttpResult;
@@ -21,5 +20,6 @@ public interface DeliveryApi {
     @FormUrlEncoded
     @POST("orderList")
     Observable<HttpResult<List<DeliveryDatum>>> getDelivery(@Field("token") String token,
-                                                            @Field("page") String page);
+                                                            @Field("page") int page,
+                                                            @Field("filter") String filter);
 }

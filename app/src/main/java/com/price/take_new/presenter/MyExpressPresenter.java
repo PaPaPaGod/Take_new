@@ -1,5 +1,7 @@
 package com.price.take_new.presenter;
 
+import android.util.Log;
+
 import com.example.takeretrofit.bean.mydeliveryorder.MyDeliveryOrderDatum;
 import com.example.takeretrofit.bean.myhelpdeliveryorder.MyHelpOrderDatum;
 import com.price.take_new.model.MyExpressModel;
@@ -49,6 +51,7 @@ public class MyExpressPresenter {
         model.getHelpExpress(token, page, new OnMyHelpExpressListener() {
             @Override
             public void onHelpSuccess(List<MyHelpOrderDatum> mData, int code) {
+                Log.e("getHelpDelivery-onMsg",mData.size()+"");
                 view.hideLoading(index);
                 view.showHelpData(mData);
             }
@@ -56,12 +59,14 @@ public class MyExpressPresenter {
             @Override
             public void onMsg(String msg, int code) {
                 view.hideLoading(index);
+                Log.e("getHelpDelivery-onMsg",msg);
                 view.showToast(msg,code);
             }
 
             @Override
             public void onError(String msg, int code) {
                 view.hideLoading(index);
+                Log.e("getHelpDelivery-onError",msg);
                 view.showToast(msg,code);
             }
         });

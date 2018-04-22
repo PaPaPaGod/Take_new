@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="@color/colorWhite"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/publish_toolbar" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="530dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/publish_toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--company-->
+            <RelativeLayout style="@style/publish_layout">
+
+                <TextView
+                    style="@style/publish_layout.TextView"
+                    android:layout_centerVertical="true"
+                    android:text="快递公司" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:entries="@array/express_company_array"
+                    android:id="@+id/spinner_publish_companny"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp">
+
+                </android.support.v7.widget.AppCompatSpinner>
+            </RelativeLayout>
+            <View
+                style="@style/Line"
+                android:layout_width="match_parent" />
+
+            <!--addr-->
+            <RelativeLayout style="@style/publish_layout">
+
+                <TextView
+                    android:id="@+id/tv_addr"
+                    style="@style/publish_layout.TextView"
+                    android:text="取件地点" />
+
+                <EditText
+                    android:layout_alignTop="@+id/tv_addr"
+                    android:id="@+id/et_publish_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/tv_addr"
+                    android:layout_toRightOf="@+id/tv_addr"
+                    android:background="@null" />
+            </RelativeLayout>
+            <View
+                style="@style/Line"
+                android:layout_width="match_parent" />
+
+            <!--常用收件地点-->
+            <RelativeLayout style="@style/publish_layout">
+
+                <TextView
+                    style="@style/publish_layout.TextView"
+                    android:text="使用常用收货地点" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switch_publish_default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp" />
+            </RelativeLayout>
+            <View
+                style="@style/Line"
+                android:layout_width="match_parent" />
+
+            <!--tbname-->
+            <RelativeLayout style="@style/publish_layout">
+
+                <TextView
+                    android:id="@+id/tv_tbname"
+                    style="@style/publish_layout.TextView"
+                    android:text="淘宝昵称" />
+
+                <EditText
+                    android:layout_alignTop="@+id/tv_tbname"
+                    android:id="@+id/et_publish_tbname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/tv_tbname"
+                    android:layout_toRightOf="@+id/tv_tbname"
+                    android:background="@null" />
+
+            </RelativeLayout>
+            <View
+                style="@style/Line"
+                android:layout_width="match_parent" />
+
+            <!--trade-->
+            <RelativeLayout style="@style/publish_layout">
+
+                <TextView
+                    android:id="@+id/tv_trade"
+                    style="@style/publish_layout.TextView"
+                    android:text="交接地点" />
+
+                <EditText
+                    android:layout_alignTop="@+id/tv_trade"
+                    android:id="@+id/et_publish_trade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/tv_trade"
+                    android:layout_toRightOf="@+id/tv_trade"
+                    android:background="@null" />
+            </RelativeLayout>
+            <View
+                style="@style/Line"
+                android:layout_width="match_parent" />
+
+            <!--package detail-->
+            <RelativeLayout style="@style/publish_layout">
+                <TextView
+                    android:id="@+id/tv_package"
+                    style="@style/publish_layout.TextView"
+                    android:text="包裹信息" />
+
+                <RadioGroup
+                    android:id="@+id/rg_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tv_package"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_publish_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="小"
+                        android:textColor="#343434"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="（1kg以内）"
+                        android:textColor="#888888"
+                        android:textSize="10dp" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_publish_mid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="中"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(1-3kg)"
+                        android:textColor="#888888"
+                        android:textSize="10dp" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_publish_big"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="大"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="（3kg以上）"
+                        android:textColor="#888888"
+                        android:textSize="10dp" />
+                </RadioGroup>
+            </RelativeLayout>
+            <View
+                style="@style/Line"
+                android:layout_width="match_parent" />
+
+            <!--pacakage detail enter-->
+            <RelativeLayout
+                style="@style/publish_layout">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/et_publish_des"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@null"
+                        android:hint="请填写包裹描述"
+                        android:textSize="14dp" />
+                </android.support.design.widget.TextInputLayout>
+
+            </RelativeLayout>
+            <View
+                style="@style/Line"
+                android:layout_width="match_parent" />
+
+            <!--at school-->
+            <RelativeLayout style="@style/publish_layout">
+
+                <TextView
+                    android:id="@+id/tv_inschool"
+                    style="@style/publish_layout.TextView"
+                    android:text="是否在校" />
+
+                <RadioGroup
+                    android:id="@+id/rg_atschool"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@+id/tv_inschool"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_publish_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="在"
+                        android:textColor="#343434"
+                        android:textSize="12dp" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_publish_notin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="不在"
+                        android:textColor="#343434"
+                        android:textSize="12dp" />
+
+                </RadioGroup>
+            </RelativeLayout>
+            <View
+                style="@style/Line"
+                android:layout_width="match_parent" />
+
+            <!--sms-->
+            <RelativeLayout
+                style="@style/publish_layout"
+                android:layout_height="80dp">
+
+                <TextView
+                    style="@style/publish_layout.TextView"
+                    android:layout_centerVertical="false"
+                    android:layout_marginTop="13dp"
+                    android:text="快递短信" />
+
+                <EditText
+                    android:id="@+id/et_publish_sms"
+                    style="?android:attr/textViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@null"
+                    android:hint="请填快递短信（可粘贴）"
+                    android:inputType="text"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:textSize="14dp" />
+            </RelativeLayout>
+            <View
+                style="@style/Line"
+                android:layout_width="match_parent" />
+
+            <!--reward-->
+            <RelativeLayout style="@style/publish_layout">
+
+                <LinearLayout
+                    android:id="@+id/ly_publish_reward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/publish_layout.TextView"
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:text="小奖励" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:text="(选项)"
+                        android:textColor="#949494"
+                        android:textSize="11dp" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/rg_reward"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/ly_publish_reward"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:textSize="12dp"
+                        android:text="赏金"
+                        android:id="@+id/rb_publish_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:id="@+id/ll_publish_money"
+                        android:layout_marginLeft="2dp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:textSize="12dp"
+                            android:background="@drawable/pic_publish_reward_money"
+                            android:id="@+id/et_publish_money"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="元"
+                            android:textColor="#343434"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+                    <RadioButton
+                        android:textSize="12dp"
+                        android:text="小奖励"
+                        android:id="@+id/rb_publish_goods"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp" />
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:id="@+id/ll_publish_goods"
+                        android:layout_marginLeft="2dp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:textSize="12dp"
+                            android:background="@drawable/pic_publish_reward_goods"
+                            android:id="@+id/et_publish_goods"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </RadioGroup>
+            </RelativeLayout>
+            <View
+                style="@style/Line"
+                android:layout_width="match_parent" />
+
+            <Button
+                android:id="@+id/btn_publish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="#FF7F00"
+                android:text="确认发布"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

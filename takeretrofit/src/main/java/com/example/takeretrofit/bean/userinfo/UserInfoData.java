@@ -23,7 +23,7 @@ public class UserInfoData {
     private String major;
     @SerializedName("auth")
     @Expose
-    private String auth;
+    private int auth;
     @SerializedName("stu_id")
     @Expose
     private String stuId;
@@ -68,11 +68,11 @@ public class UserInfoData {
         this.major = major;
     }
 
-    public String getAuth() {
+    public int getAuth() {
         return auth;
     }
 
-    public void setAuth(String auth) {
+    public void setAuth(int auth) {
         this.auth = auth;
     }
 

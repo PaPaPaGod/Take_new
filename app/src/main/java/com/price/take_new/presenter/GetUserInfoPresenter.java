@@ -41,12 +41,12 @@ public class GetUserInfoPresenter {
                 info.setToken(token);
                 info.setSex(data.getSex());
                 info.setName(data.getName());
-                info.setAuth(data.getAuth());
+//                info.setAuth(data.getAuth());
                 boolean isAuth = false;
-                if(data.getAuth().equals("1")){
+                if(data.getAuth()==1){
                     isAuth = true;
                 }
-                ManagerData.cacheAuth(context,isAuth);
+//                ManagerData.cacheAuth(context,isAuth);
                 info.setMajor(data.getMajor());
                 infoView.bindData(info);
             }

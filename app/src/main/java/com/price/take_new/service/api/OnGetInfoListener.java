@@ -7,7 +7,7 @@ import com.example.takeretrofit.bean.userinfo.UserInfoData;
  */
 
 public interface OnGetInfoListener {
-    void onSuccess(UserInfoData data,int code);
-    void onMsg(String msg,int code);
-    void onError(String msg,int code);
+    void onSuccess(UserInfoData data, int code);
+    void onMsg(String msg, int code);
+    void onError(String msg, int code);
 }

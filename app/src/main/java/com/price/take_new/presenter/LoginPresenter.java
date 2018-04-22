@@ -34,13 +34,13 @@ public class LoginPresenter {
     private ILoginModel loginModel;
     private ILoginView loginView;
     private IGetUserInfoModel userInfoModel;
-//    private GetUserInfoPresenter userInfoPresenter;
+    private GetUserInfoPresenter userInfoPresenter;
 
     private String login_token ;
     private String login_ry_token ;
     private String login_msg ;
 
-
+    private static final String TAG = "loginpresenter";
 
     public LoginPresenter(ILoginView loginView) {
         this.loginModel = new LoginModel();
@@ -56,6 +56,7 @@ public class LoginPresenter {
                 loginView.showToast("登陆成功!");
                 login_token = token;
                 login_ry_token = ry_token;
+                ManagerData.cacheToken(context,token);
                 if(TextUtils.isEmpty(login_ry_token)){
                     loginView.goToSetInfo(token);
                 }else {
@@ -64,22 +65,23 @@ public class LoginPresenter {
                         @Override
                         public void onSuccess(UserInfoData data, int code) {
                             loginView.hideLoading();
-                            String auth = data.getAuth();
-                            boolean isAuth = false;
-                            if(auth.equals("1")){
-                                isAuth = true;
-                            }
-                            ManagerData.cacheAuth(context,isAuth);
+                            int auth = data.getAuth();
+                            Log.e("loginpresenter",auth+"");
+//                            if(auth==1) {
+                            ManagerData.cacheAuth(context, auth);
+//                            }
                             loginView.goToHome(token,ry_token);
                         }
 
                         @Override
                         public void onMsg(String msg, int code) {
+                            Log.e(TAG,msg);
                             loginView.hideLoading();
                         }
 
                         @Override
                         public void onError(String msg, int code) {
+                            Log.e(TAG,msg);
                             loginView.hideLoading();
                         }
                     });

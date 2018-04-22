@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#fff841</color>
-    <color name="colorPrimaryDark">#FFF841</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="grey">#8C8C8C</color>
-    <color name="red">#EA2000</color>
-
-    <color name="background">#00000000</color>
-    <color name="split_line">#11112233</color>
-    <color name="text1">#59B29C</color>
-    <color name="text2">#333333</color>
-
-    <color name="color1">#F0F0F0</color>
-    <color name="color2">#FFFFFF</color>
-    <color name="color3">#B0B0B0</color>
-    <color name="color4">#666666</color>
-    <color name="color5">#57C5E8</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#FFD614</color>
+    <color name="colorAccent">#FFD614</color>
+    <color name="colorToolbar">#FFD302</color>
+    <color name="colorWhite">#FEFEFE</color>
+    <color name="colorTabBackground">#F4F4F4</color>
+    <color name="colorBackgroundGray">#F4F4F4</color>
+    <color name="colorRed">#FF2727</color>
 </resources>

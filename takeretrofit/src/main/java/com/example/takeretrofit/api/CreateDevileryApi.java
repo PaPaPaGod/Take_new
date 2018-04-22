@@ -19,10 +19,16 @@ public interface CreateDevileryApi {
     @POST("createOrder")
     Observable<HttpResultWithoutData> createOrder(@Field(Config.KEY_TOKEN) String toke,
                                                   @Field(Config.KEY_COMPANY) String company,
-                                                  @Field(Config.KEY_DES) String des,
                                                   @Field(Config.KEY_ADDRESS) String address,
                                                   @Field(Config.KEY_PLACE) String place,
+                                                  @Field(Config.KEY_TB_NAME) String nickname,
+                                                  @Field(Config.KEY_WEITIGHT) int weight_type,
+                                                  @Field(Config.KEY_DES) String des,
+                                                  @Field(Config.KEY_ATSHCOOL) int at_school,
+                                                  @Field(Config.KEY_SMS_CONTENT) String sms_content,
                                                   @Field(Config.KEY_PRICE) String price,
+                                                  @Field(Config.KEY_SMALL_REWARD) String small_reward,
                                                   @Field(Config.KEY_TAKE_TIME) String take_time,
-                                                  @Field(Config.KEY_SMS_CONTENT) String sms_content);
+                                                  @Field(Config.FROM_WEIXIN) int weixin
+    );
 }

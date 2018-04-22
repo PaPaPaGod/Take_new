@@ -2,6 +2,7 @@ package com.example.takeretrofit.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v4.app.FragmentActivity;
 
 import com.example.takeretrofit.Config;
 
@@ -59,16 +60,41 @@ public class ManagerData {
                 getString(Config.KEY_PHONE_NUM,null);
     }
 
-    public static void cacheAuth(Context context,boolean isAuth){
+    public static void cacheAuth(Context context,int authoStatus){
         SharedPreferences.Editor editor = context.getSharedPreferences(Config.APP_PACKAGE_NAME,
                 Context.MODE_PRIVATE).edit();
-        editor.putBoolean(Config.KEY_IS_AUTH,isAuth);
+        editor.putInt(Config.KEY_IS_AUTH,authoStatus);
         editor.commit();
     }
 
-    public static boolean getAuth(Context context){
+    public static int getAuth(Context context){
         return context.getSharedPreferences(Config.APP_PACKAGE_NAME,Context.MODE_PRIVATE).
-                getBoolean(Config.KEY_IS_AUTH,false);
+                getInt(Config.KEY_IS_AUTH,Config.AUTH_NOT);
     }
 
+    public static void clearCachedData(Context context) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(Config.APP_PACKAGE_NAME,
+                Context.MODE_PRIVATE).edit();
+        editor.clear();
+        editor.commit();
+    }
+
+    public static void cacheTBName(Context context,String tbname) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(Config.APP_PACKAGE_NAME,
+                Context.MODE_PRIVATE).edit();
+        editor.putString(Config.KEY_TB_NAME,tbname);
+        editor.commit();
+    }
+
+    public static void cacheTrade(Context context,String trade){
+        SharedPreferences.Editor editor = context.getSharedPreferences(Config.APP_PACKAGE_NAME,
+                Context.MODE_PRIVATE).edit();
+        editor.putString(Config.KEY_TRADE,trade);
+        editor.commit();
+    }
+
+    public static String getCachedTrade(Context context) {
+        return context.getSharedPreferences(Config.APP_PACKAGE_NAME,Context.MODE_PRIVATE).
+                getString(Config.KEY_TRADE,null);
+    }
 }

@@ -9,6 +9,6 @@ import android.os.Bundle;
 
 public interface AcceptExpressView {
     void showData(Bundle data);
-    void showToast(String msg,int code);
+    void showToast(String msg, int code);
     void showMyDialog(int code);
 }

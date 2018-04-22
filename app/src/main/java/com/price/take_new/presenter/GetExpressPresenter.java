@@ -1,12 +1,12 @@
 package com.price.take_new.presenter;
 
+import android.util.Log;
+
 import com.example.takeretrofit.bean.delivery.DeliveryDatum;
-import com.price.take_new.Constant;
 import com.price.take_new.model.GetExpressModel;
 import com.price.take_new.service.api.OnExpressListener;
 import com.price.take_new.service.modelService.IGetExpressModel;
 import com.price.take_new.service.viewService.IGetExpressView;
-import com.price.take_new.utils.item.AllExpressOrderItem;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 public class GetExpressPresenter {
+    private static final String TAG = "GetExpressPresenter";
     private IGetExpressModel expressModel;
     private IGetExpressView expressView;
 
@@ -23,11 +24,12 @@ public class GetExpressPresenter {
         expressModel = new GetExpressModel();
     }
 
-    public void getExpress(String token, String page, final int index){
+    public void getExpress(String token, int page, String filter,final int index){
         expressView.showLoading(index);
-        expressModel.getExpress(token, page, new OnExpressListener() {
+        expressModel.getExpress(token, page,filter, new OnExpressListener() {
             @Override
             public void onSuccess(List<DeliveryDatum> deliveryDatum, int success) {
+                Log.e(TAG,"onSuccess");
                 expressView.hideLoading(index);
                 expressView.showData(deliveryDatum);
                 expressView.showToast("加载成功");
@@ -35,12 +37,14 @@ public class GetExpressPresenter {
 
             @Override
             public void onMsg(String msg, int hint) {
+                Log.e(TAG,"onMsg");
                 expressView.hideLoading(index);
                 expressView.showToast(msg);
             }
 
             @Override
             public void onError(Throwable throwable, int error) {
+                Log.e(TAG,"onError");
                 expressView.hideLoading(index);
                 expressView.showToast(throwable.getMessage());
             }

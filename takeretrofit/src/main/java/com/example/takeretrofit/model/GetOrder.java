@@ -20,7 +20,7 @@ public class GetOrder {
 
     public void getOrder(String token,String poster_id,String express_id){
         ServiceFactory.getInstance().createService(GetOrderApi.class)
-                .getOrder(token,poster_id,express_id)
+                .getOrder(token,express_id)
                 .compose(TransFormUtils.<HttpResultWithoutData>defaultSchedulers())
                 .subscribe(new HttpResultMsgSubscriber() {
                     @Override

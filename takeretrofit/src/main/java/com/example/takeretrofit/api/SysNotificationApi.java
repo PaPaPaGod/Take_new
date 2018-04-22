@@ -1,10 +1,8 @@
 package com.example.takeretrofit.api;
 
 import com.example.takeretrofit.Config;
-import com.example.takeretrofit.bean.delivery.DeliveryDatum;
 import com.example.takeretrofit.bean.sysnotification.NotificationDatum;
 import com.example.takeretrofit.retrofit.httpsubscriber.httpwithdata.HttpResult;
-import com.example.takeretrofit.retrofit.httpsubscriber.httpwithoutdata.HttpResultWithoutData;
 
 import java.util.List;
 
@@ -22,6 +20,6 @@ public interface SysNotificationApi {
     @FormUrlEncoded
     @POST("getMessageList")
     Observable<HttpResult<List<NotificationDatum>>> getSysNotification(@Field(Config.KEY_TOKEN) String token,
-                                              @Field(Config.KEY_PAGE) String page,
-                                              @Field(Config.KEY_SIZE) String size);
+                                                                       @Field(Config.KEY_PAGE) String page,
+                                                                       @Field(Config.KEY_SIZE) String size);
 }

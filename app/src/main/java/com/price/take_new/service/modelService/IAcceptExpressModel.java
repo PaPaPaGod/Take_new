@@ -9,5 +9,5 @@ import com.price.take_new.service.api.AcceptExpressListener;
  */
 
 public interface IAcceptExpressModel {
-    void getExpress(String token, String poster_id, String express_id, UserInfo info,AcceptExpressListener acceptExpressListener);
+    void getExpress(String token, String express_id, AcceptExpressListener acceptExpressListener);
 }

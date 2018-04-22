@@ -1,7 +1,11 @@
 package com.price.take_new;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
+
+import com.price.take_new.view.fragment.home.HomeFragment;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -24,10 +28,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     //移除fragment
     protected void removeFragment() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+//            Log.e(TAG,);
             getSupportFragmentManager().popBackStack();
         } else {
             finish();
         }
+    }
+
+    public Fragment findFragmentByTag(String s) {
+        BaseFragment fragment = (BaseFragment) getSupportFragmentManager().findFragmentByTag(s);
+        return fragment;
     }
 
     //返回键返回事件

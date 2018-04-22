@@ -18,20 +18,7 @@ public class UpdateOrder {
     private String tag = "deleteorder_test";
     public void updateOrder(String token,String order_id,String company,String des,String address,
                             String take_time,String place,String price){
-        ServiceFactory.getInstance().createService(UpdateMyOrderApi.class)
-                .update(token,order_id,company,des,address,take_time,place,price)
-                .compose(TransFormUtils.<HttpResultWithoutData>defaultSchedulers())
-                .subscribe(new HttpResultMsgSubscriber() {
-                    @Override
-                    public void onSuccessWithMsg(String result) {
-                        Log.e(tag,result);
-                    }
 
-                    @Override
-                    public void _onError(Throwable throwable) {
-                        Log.e(tag,throwable.getMessage());
-                    }
-                });
     }
 }
 

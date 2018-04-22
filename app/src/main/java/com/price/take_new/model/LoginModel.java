@@ -26,15 +26,6 @@ public class LoginModel implements ILoginModel {
     private String token = "token";
     private String msg = "msg";
 
-//    @Override
-//    public String getPhone(Context context) {
-//        String phone = ManagerData.getPhoneNum(context);
-//        if(!phone.isEmpty()){
-//            return phone;
-//        }
-//        return null;
-//    }
-
     @Override
     public void login(String phone_num, String password, final OnLoginListener onLoginListener) {
         ServiceFactory.getInstance().createService(LoginApi.class)
@@ -44,12 +35,9 @@ public class LoginModel implements ILoginModel {
                     @Override
                     public void onSuccessWithData(LoginData loginData) {
                         //网络请求成功时调用，如登陆成功等情况
-//                        Log.e(TAG, loginData.getToken());
-//                        data.setData(T);
                         token = loginData.getToken();
                         String ry_token = loginData.getRyToken();
                         onLoginListener.onSuccess(token, ry_token,Constant.SUCCESS_WITH_DATA);
-//                        ManagerData.cacheToken();
                     }
 
                     @Override

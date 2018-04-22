@@ -13,7 +13,7 @@ import java.util.List;
 public interface IMyExpressView {
     void showHelpData(List<MyHelpOrderDatum> mData);
     void showMyData(List<MyDeliveryOrderDatum> mData);
-    void showToast(String msg,int code);
+    void showToast(String msg, int code);
     void showLoading(int index);
     void hideLoading(int index);
 }

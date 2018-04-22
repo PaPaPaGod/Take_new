@@ -13,6 +13,6 @@ import java.util.List;
 public interface OnMyExpressListener {
 //    void onMySuccess(List<MyDeliveryOrderDatum> mData, int code);
 //    void onHelpSuccess(List<MyHelpOrderDatum> mData, int code);
-    void onMsg(String msg,int code);
-    void onError(String msg,int code);
+    void onMsg(String msg, int code);
+    void onError(String msg, int code);
 }

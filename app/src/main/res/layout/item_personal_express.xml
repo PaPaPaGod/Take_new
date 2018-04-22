@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_margin="5dp"
+    android:layout_gravity="center_horizontal|center_vertical"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="340dp"
+    android:layout_height="120dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="92dp"
+        android:layout_height="120dp"
+        android:id="@+id/linearLayout">
+        <ImageView
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:id="@+id/item_personal_express_portrait"
+            android:src="@drawable/portrait_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:text="name"
+            android:id="@+id/item_personal_express_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:src="@drawable/inschool"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:id="@+id/item_personal_express_inschool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <!--<TextView-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:layout_gravity="center_vertical|center_horizontal"-->
+            <!--android:text="inschool"-->
+            <!--android:id="@+id/item_personal_express_inschool"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+    </LinearLayout>
+
+    <View
+        android:id="@+id/column"
+        android:layout_centerInParent="true"
+        android:background="#EEEEEE"
+        android:layout_width="1dp"
+        android:layout_height="102dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/linearLayout"
+        android:layout_toRightOf="@+id/linearLayout" />
+
+    <LinearLayout
+        android:id="@+id/layout_detail"
+        android:layout_toEndOf="@+id/column"
+        android:layout_toRightOf="@+id/column"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="11dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="快递公司："
+                style="@style/ItemMainExpress" />
+
+            <TextView
+                android:id="@+id/item_personal_express_company"
+                style="@style/ItemMainExpress.Detail"
+                android:text="快递公司：" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="9dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="取件地点："
+                style="@style/ItemMainExpress" />
+
+            <TextView
+                android:id="@+id/item_personal_express_addr"
+                style="@style/ItemMainExpress.Detail"
+                android:text="快递公司：" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="9dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="包裹描述："
+                style="@style/ItemMainExpress" />
+
+            <TextView
+                android:id="@+id/item_personal_express_desc"
+                style="@style/ItemMainExpress.Detail"
+                android:text="快递公司：" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true">
+
+        <TextView
+            android:textSize="12dp"
+            android:text="来自手机客户端"
+            android:gravity="center"
+            android:textColor="#FF7F00"
+            android:id="@+id/item_personal_express_weixin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/item_personal_express_reward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pic_reward" />
+
+        <TextView
+            android:textColor="#FF7F00"
+            android:id="@+id/item_personal_express_isfriends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="friends" />
+
+        <ImageView
+            android:id="@+id/item_personal_express_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/go_on" />
+
+    </LinearLayout>
+</RelativeLayout>
